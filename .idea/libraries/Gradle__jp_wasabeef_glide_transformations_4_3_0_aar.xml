@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: jp.wasabeef:glide-transformations:4.3.0@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6a816b66eefab9c6079c625bff1ecbcb/transformed/jetified-glide-transformations-4.3.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/145926dbe40b19479dc1bc2e2511f1bc/transformed/jetified-glide-transformations-4.3.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/835d91d6068f34ac2a1ab5056f5cf417/transformed/jetified-glide-transformations-4.3.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8237452c3e82b0c871a250e09fa318a9/transformed/jetified-glide-transformations-4.3.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/8237452c3e82b0c871a250e09fa318a9/transformed/jetified-glide-transformations-4.3.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8237452c3e82b0c871a250e09fa318a9/transformed/jetified-glide-transformations-4.3.0/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/jp.wasabeef/glide-transformations/4.3.0/34039c848604483d764853162537954e55ccb8c8/glide-transformations-4.3.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/jp.wasabeef/glide-transformations/4.3.0/89fca58c32b9d3f8dc70852e372b33b90bb0e686/glide-transformations-4.3.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

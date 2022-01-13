@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_200"
+    android:fitsSystemWindows="true"
+    android:fillViewport="true"
+    tools:context=".views.TvSeriesDetailsActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewBackdropVideoTS"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/poster" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/borderButtonPlayTrailerTS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_border_play_icon_poster"
+            android:translationZ="3dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewBackdropVideoTS"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewBackdropVideoTS"
+            app:layout_constraintStart_toStartOf="@+id/imageViewBackdropVideoTS"
+            app:layout_constraintTop_toTopOf="@+id/imageViewBackdropVideoTS">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/buttonPlayTrailerTS"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/custom_circle_play_icon_poster"
+                android:scaleType="center"
+                android:translationZ="3dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/resize_play_icon_poster" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewTitleTS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:maxWidth="265dp"
+            android:text="Title or Name"
+            android:textColor="@color/white"
+            android:textSize="27sp"
+            android:letterSpacing="0.03"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewBackdropVideoTS"
+            app:layout_constraintVertical_bias="0.0" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView4KTS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/custom_background_text_view_4k"
+            android:gravity="center"
+            android:paddingStart="8dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="2dp"
+            android:text="4K"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewTitleTS"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textViewTitleTS"
+            app:layout_constraintTop_toTopOf="@+id/textViewTitleTS"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewEpisodeTS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:letterSpacing="0.03"
+            android:text="Episodes"
+            android:textColor="@color/gray_100"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewEpisodeTS"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageViewEpisodeTS"
+            app:layout_constraintTop_toTopOf="@+id/imageViewEpisodeTS" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewEpisodeTS"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textViewTitleTS"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textViewTitleTS"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitleTS"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/episode_icon"
+            app:tint="@color/gray_100" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewSeasonTS"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewEpisodeTS"
+            app:layout_constraintStart_toStartOf="@+id/imageViewEpisodeTS"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewEpisodeTS"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/tv_season_icon"
+            app:tint="@color/gray_100" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewSeasonTS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:letterSpacing="0.03"
+            android:text="Seasons"
+            android:textColor="@color/gray_100"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewSeasonTS"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageViewSeasonTS"
+            app:layout_constraintTop_toTopOf="@+id/imageViewSeasonTS" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewIconStarTS"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="18dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewEpisodeTS"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textViewEpisodeTS"
+            app:layout_constraintTop_toTopOf="@+id/imageViewEpisodeTS"
+            app:srcCompat="@drawable/gray_star_icon" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewVoteAverageTS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="Vote average (IMDb)"
+            android:textColor="@color/gray_100"
+            android:textSize="18sp"
+            android:letterSpacing="0.03"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewEpisodeTS"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageViewIconStarTS"
+            app:layout_constraintTop_toTopOf="@+id/textViewEpisodeTS" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutFirstDividerTS"
+            android:layout_width="342dp"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="22dp"
+            android:background="@color/gray_700"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewSeasonTS"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutContainerTS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayoutFirstDividerTS"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayoutFirstDividerTS"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutFirstDividerTS"
+            app:layout_constraintVertical_bias="0.0">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewFADTS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:letterSpacing="0.03"
+                android:text="First air date"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewGTS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="56dp"
+                android:text="Genre"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:letterSpacing="0.03"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewFADTS"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/textViewFADTS"
+                app:layout_constraintTop_toTopOf="@+id/textViewFADTS" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewFirstAirDateTS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="First air date"
+                android:textColor="@color/gray_100"
+                android:textSize="18sp"
+                android:letterSpacing="0.03"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textViewFADTS"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textViewFADTS"
+                app:layout_constraintTop_toBottomOf="@+id/textViewFADTS"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewLADTS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Last air date"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:letterSpacing="0.03"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textViewFirstAirDateTS"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textViewFirstAirDateTS"
+                app:layout_constraintTop_toBottomOf="@+id/textViewFirstAirDateTS"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewGenreTS"
+                android:layout_width="195dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/textViewGTS"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textViewGTS"
+                app:layout_constraintTop_toBottomOf="@+id/textViewGTS" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewLastAirDateTS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Last air date"
+                android:textColor="@color/gray_100"
+                android:textSize="18sp"
+                android:letterSpacing="0.03"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textViewLADTS"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textViewLADTS"
+                app:layout_constraintTop_toBottomOf="@+id/textViewLADTS"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutSecondDividerTS"
+            android:layout_width="342dp"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/gray_700"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayoutFirstDividerTS"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayoutFirstDividerTS"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutContainerTS"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewSTS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Synopsis"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:letterSpacing="0.03"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutSecondDividerTS"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <com.borjabravo.readmoretextview.ReadMoreTextView
+            android:id="@+id/textViewOverviewTS"
+            android:layout_width="355dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:lineHeight="25dp"
+            android:minHeight="48dp"
+            android:text="Overview"
+            android:textColor="@color/gray_100"
+            android:textSize="18sp"
+            app:trimCollapsedText="Hide"
+            app:trimExpandedText="Read more.."
+            app:trimLength="118"
+            app:trimMode="trimModeLength"
+            app:colorClickableText="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textViewSTS"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textViewSTS"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSTS"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewBSTS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Broadcasting seasons"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:letterSpacing="0.03"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textViewOverviewTS"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textViewOverviewTS"
+            app:layout_constraintTop_toBottomOf="@+id/textViewOverviewTS"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textViewBSTS"
+            app:layout_constraintStart_toStartOf="@+id/textViewBSTS"
+            app:layout_constraintTop_toBottomOf="@+id/textViewBSTS"
+            app:layout_constraintVertical_bias="0.0">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewBroadcastingSeasonTS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="19dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="19dp"
+                android:paddingBottom="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewCACTS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:letterSpacing="0.03"
+            android:text="Cast &amp; Crew"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textViewBSTS"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textViewBSTS"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewMoreTS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:text="More.."
+            android:textColor="@color/gray_100"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewCACTS"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textViewCACTS"
+            app:layout_constraintTop_toTopOf="@+id/textViewCACTS"
+            app:layout_constraintVertical_bias="1.0" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textViewCACTS"
+            app:layout_constraintStart_toStartOf="@+id/textViewCACTS"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCACTS"
+            app:layout_constraintVertical_bias="0.0">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewCastAndCrewTS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="19dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="19dp"
+                android:paddingBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewRMTS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:letterSpacing="0.03"
+            android:text="Related Movies"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textViewCACTS"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textViewCACTS"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout7"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textViewRMTS"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textViewRMTS"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRMTS"
+            app:layout_constraintVertical_bias="0.0">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewRelatedMovieTS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="19dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="19dp"
+                android:paddingBottom="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewBackButtonTS"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:padding="10dp"
+            android:background="@drawable/custom_back_press_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/press_back_icon" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

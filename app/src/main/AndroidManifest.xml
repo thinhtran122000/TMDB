@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.tmdb">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <queries>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TMDB"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+        <activity
+            android:name=".views.ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.SearchMoviesAndTvSeriesActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".views.TvSeriesBroadcastingSeasonsDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.ListTvSeriesCrewDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.ListTvSeriesCastDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.TvSeriesListCreditsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.ListNowPlayingMovieCrewDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.ListNowPLayingMovieCastDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.NowPlayingMovieListCreditsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.ListTrendingMovieCrewDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.ListTrendingMovieCastDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.TrendingMovieListCreditsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".views.TvSeriesDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.NowPlayingMovieDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.TrendingMovieDetailsActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
+        <activity
+            android:name=".views.MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"></activity>
+    </application>
+
+</manifest>

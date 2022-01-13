@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.TvSeriesBroadcastingSeasonsDetailsActivity"
+    android:background="@color/black_200">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewPosterDSTS"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/poster" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewNameDSTS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:letterSpacing="0.03"
+        android:maxWidth="265dp"
+        android:text="Name"
+        android:textColor="@color/white"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPosterDSTS"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewEDSTS"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewNameDSTS"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewNameDSTS"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNameDSTS"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/episode_icon"
+        app:tint="@color/gray_100" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewEpisodeDSTS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:letterSpacing="0.03"
+        android:text="Episodes"
+        android:textColor="@color/gray_100"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewEDSTS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageViewEDSTS"
+        app:layout_constraintTop_toTopOf="@+id/imageViewEDSTS" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewADDSTS"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewEpisodeDSTS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewEpisodeDSTS"
+        app:layout_constraintTop_toTopOf="@+id/textViewEpisodeDSTS"
+        app:srcCompat="@drawable/calendar_icon"
+        app:tint="@color/gray_100" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewAirDateDSTS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:letterSpacing="0.03"
+        android:text="Air date"
+        android:textColor="@color/gray_100"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewADDSTS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageViewADDSTS"
+        app:layout_constraintTop_toTopOf="@+id/imageViewADDSTS" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutFirstDividerDSTS"
+        android:layout_width="342dp"
+        android:layout_height="1.5dp"
+        android:layout_marginTop="22dp"
+        android:background="@color/gray_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAirDateDSTS"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewOVDSTS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:letterSpacing="0.03"
+        android:text="Overview"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutFirstDividerDSTS"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.borjabravo.readmoretextview.ReadMoreTextView
+        android:id="@+id/textViewOverviewDSTS"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:lineHeight="25dp"
+        android:minHeight="48dp"
+        android:text="Overview"
+        android:textColor="@color/gray_100"
+        android:textSize="18sp"
+        app:trimCollapsedText="Hide"
+        app:trimExpandedText="Read more.."
+        app:trimLength="118"
+        app:trimMode="trimModeLength"
+        app:colorClickableText="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewOVDSTS"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewOVDSTS"
+        app:layout_constraintTop_toBottomOf="@+id/textViewOVDSTS"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewNewAndOldDSTS"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/imageViewPosterDSTS"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48000002"
+        app:srcCompat="@drawable/new_season_icon" />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewBackButtonBroadcastingSeasonsDetailsTS"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:background="@drawable/custom_back_press_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/press_back_icon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.ListTvSeriesCrewDetailsActivity"
+    android:background="@color/black_200">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewProfileCrewTS"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/cast_and_crew" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewBackButtonCrewDetailsTS"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:background="@drawable/custom_back_press_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/press_back_icon" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewNCrTS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:text="Name:"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewProfileCrewTS"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewGCrTS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Gender:"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewNCrTS"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewNCrTS"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNameCrewTS"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewJCrTS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Job:"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewGCrTS"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewGCrTS"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGenderCrewTS"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewKFDCrTS"
+        android:layout_width="124dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Know for department:"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewJCrTS"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textViewJCrTS"
+        app:layout_constraintTop_toBottomOf="@+id/textViewJobCrewTS"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewNameCrewTS"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="Name"
+        android:textColor="@color/gray_100"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewNCrTS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewNCrTS"
+        app:layout_constraintTop_toTopOf="@+id/textViewNCrTS" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewGenderCrewTS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="Gender"
+        android:textColor="@color/gray_100"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewGCrTS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewGCrTS"
+        app:layout_constraintTop_toTopOf="@+id/textViewGCrTS" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewJobCrewTS"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="Job"
+        android:textColor="@color/gray_100"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewJCrTS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewJCrTS"
+        app:layout_constraintTop_toTopOf="@+id/textViewJCrTS"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewKnownForDepartmentCrewTS"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="Known for department"
+        android:textColor="@color/gray_100"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewKFDCrTS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewKFDCrTS"
+        app:layout_constraintTop_toTopOf="@+id/textViewKFDCrTS"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

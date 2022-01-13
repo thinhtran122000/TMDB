@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/black_200"
+    android:paddingStart="7dp"
+    android:paddingEnd="7dp"
+    android:paddingTop="7dp"
+    android:paddingBottom="7dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewCastTS"
+        android:layout_width="106dp"
+        android:layout_height="115dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/cast_and_crew" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewCastNameTS"
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Cast name"
+        android:textSize="18sp"
+        android:lineHeight="17dp"
+        android:letterSpacing="0.02"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewCastTS"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageViewCastTS"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCastTS"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
