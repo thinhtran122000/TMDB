@@ -175,7 +175,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutContainerNPM"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -275,12 +275,12 @@
             android:layout_width="355dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:letterSpacing="0.03"
             android:lineHeight="25dp"
             android:minHeight="48dp"
             android:text="Overview"
             android:textColor="@color/gray_100"
             android:textSize="18sp"
-            android:letterSpacing="0.03"
             app:colorClickableText="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/textViewSNPM"
@@ -366,7 +366,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout6"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="230dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"

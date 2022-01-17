@@ -1,5 +1,6 @@
 package com.example.tmdb.views
 
+
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Html
@@ -19,10 +20,11 @@ import com.example.tmdb.databinding.FragmentHomeBinding
 import com.example.tmdb.models.movies.TrendingMovie
 import com.example.tmdb.viewmodels.MovieViewModel
 import kotlin.math.abs
-
-
-
-
+import androidx.viewpager2.widget.ViewPager2
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import kotlin.collections.ArrayList
 
 
 class HomeFragment : Fragment() {
@@ -39,16 +41,13 @@ class HomeFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
         val colorOrange = resources.getColor(R.color.orange)
         val colorWhite = resources.getColor(R.color.white)
         binding.textViewStream.text = Html.fromHtml("<font color=$colorWhite>Stream</font> <font color=$colorOrange>Everywhere</font>")
         Glide.with(this)
             .load(R.drawable.eternal)
-            .override(327,191)
-            .centerCrop()
+            .transform(CenterCrop(),RoundedCorners(50))
+            .placeholder(R.drawable.placeholder)
             .into(binding.imageViewPoster)
         // Call adapter
         movieSliderAdapter = MovieSliderAdapter(requireContext(),arrayListTrendingMovies)
@@ -56,17 +55,127 @@ class HomeFragment : Fragment() {
         movieViewModel.mutableTrendingMoviesLiveData.observe(this.viewLifecycleOwner, Observer {
             if(it?.results !=null){
                 arrayListTrendingMovies.clear()
-                this.arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
+                arrayListTrendingMovies.addAll(it.results!!)
             }
             movieSliderAdapter.notifyDataSetChanged()
         })
         // Call api
         movieViewModel.getTrendingMovies("movie","day")
         // Set up adapter and properties of view pager 2 (slider)
+        binding.viewPager2.viewTreeObserver.addOnGlobalLayoutListener(OnGlobalLayoutListener {
+            binding.viewPager2.setCurrentItem(
+                500,
+                false
+            )
+        })
         binding.viewPager2.adapter = movieSliderAdapter
         binding.viewPager2.clipToPadding = false
         binding.viewPager2.clipChildren = false
         binding.viewPager2.offscreenPageLimit = 3
+        binding.viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int
+            ) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+            }
+
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+                super.onPageScrollStateChanged(state)
+
+//                val currentPage: Int = binding.viewPager2.currentItem
+//                if (currentPage == arrayListTrendingMovies.size-1 || currentPage == 0) {
+//                    previousState = currentState
+//                    currentState = state
+//                    if (previousState == 1 && currentState == 0) {
+//                        binding.viewPager2.currentItem = if (currentPage == 0) arrayListTrendingMovies.size-1 else 0
+//                    }
+//                }
+            }
+        })
+
         binding.viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         val compositePageTransformer = CompositePageTransformer()
         compositePageTransformer.addTransformer(MarginPageTransformer(60))
@@ -78,6 +187,9 @@ class HomeFragment : Fragment() {
     }
 
 
+    override fun onResume() {
+        super.onResume()
 
+    }
 
 }

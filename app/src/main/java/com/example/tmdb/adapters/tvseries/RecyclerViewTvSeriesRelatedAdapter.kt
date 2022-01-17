@@ -2,6 +2,7 @@ package com.example.tmdb.adapters.tvseries
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.example.tmdb.R
 import com.example.tmdb.databinding.ItemTvSeriesRelatedLayoutBinding
 import com.example.tmdb.models.tvseries.RelatedTvSeries
 import com.example.tmdb.utils.Credentials
+import com.example.tmdb.views.TvSeriesDetailsActivity
 import java.time.LocalDate
 import java.time.format.DateTimeParseException
 
@@ -30,13 +32,19 @@ class RecyclerViewTvSeriesRelatedAdapter(private var context: Context,
         val colorYear = context.resources.getColor(R.color.gray_100)
         if(holder is RelatedTvSeriesVH){
             var relatedTvSeries: RelatedTvSeries = arrayListRelatedTvSeries!![position]
+            val relatedTvSeriesName = relatedTvSeries.name
             try {
-                val relatedTvSeriesFirstAirDate = LocalDate.parse(relatedTvSeries.firstAirDate)
-                val relatedTvSeriesFirstAirYear = relatedTvSeriesFirstAirDate.year
-                val relatedTvSeriesName = relatedTvSeries.name
-                holder.itemTvSeriesRelatedLayoutBinding.textViewNameRTS.text =
-                    Html.fromHtml("<font color=$colorTitle>$relatedTvSeriesName</font>" +
-                            " <font color=$colorYear>($relatedTvSeriesFirstAirYear)</font>")
+                if(relatedTvSeries.firstAirDate?.isNotEmpty() == true){
+                    val relatedTvSeriesFirstAirDate = LocalDate.parse(relatedTvSeries.firstAirDate)
+                    val relatedTvSeriesFirstAirYear = relatedTvSeriesFirstAirDate.year
+                    holder.itemTvSeriesRelatedLayoutBinding.textViewNameRTS.text =
+                        Html.fromHtml("<font color=$colorTitle>$relatedTvSeriesName</font>" +
+                                " <font color=$colorYear>($relatedTvSeriesFirstAirYear)</font>")
+                }else{
+                    holder.itemTvSeriesRelatedLayoutBinding.textViewNameRTS.text =
+                        Html.fromHtml("<font color=$colorTitle>$relatedTvSeriesName</font>" +
+                                " <font color=$colorYear>(Unknown)</font>")
+                }
             }catch (e: DateTimeParseException){
                 Toast.makeText(context,e.message, Toast.LENGTH_SHORT).show()
             }
@@ -54,6 +62,12 @@ class RecyclerViewTvSeriesRelatedAdapter(private var context: Context,
                     .into(holder.itemTvSeriesRelatedLayoutBinding.imageViewPosterRTS)
             }
             holder.setIsRecyclable(false)
+            holder.itemTvSeriesRelatedLayoutBinding.root.setOnClickListener {
+                val intent = Intent(holder.itemView.context, TvSeriesDetailsActivity::class.java)
+                intent.putExtra("Tv series id",relatedTvSeries.id)
+                intent.putExtra("Tv series vote average",relatedTvSeries.voteAverage)
+                holder.itemView.context.startActivity(intent)
+            }
         }
     }
 

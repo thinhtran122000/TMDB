@@ -9,7 +9,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.tmdb.R
 import com.example.tmdb.databinding.ActivityMainBinding
+import kotlinx.coroutines.DelicateCoroutinesApi
 
+@DelicateCoroutinesApi
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navHostFragment:NavHostFragment
@@ -28,12 +30,12 @@ class MainActivity : AppCompatActivity() {
                 return@setOnNavigationItemReselectedListener
             }
         }
-        val intent = intent
-        val userName = intent.getStringExtra("user name")
-        val bundle = Bundle()
-        bundle.putString("user name",userName)
-        val profileFragment = ProfileFragment()
-        profileFragment.arguments = bundle
+//        val intent = intent
+//        val userName = intent.getStringExtra("user name")
+//        val bundle = Bundle()
+//        bundle.putString("user name",userName)
+//        val profileFragment = ProfileFragment()
+//        profileFragment.arguments = bundle
     }
 
     override fun onBackPressed() {

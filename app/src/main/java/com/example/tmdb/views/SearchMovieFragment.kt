@@ -5,12 +5,15 @@ import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.tmdb.R
 import com.example.tmdb.adapters.searching.RecyclerViewMovieSearchResultsAdapter
@@ -57,6 +60,7 @@ class SearchMovieFragment : Fragment() {
             }
             totalPagesMovieSearch = it?.totalPages!!
         })
+
         binding.editTextSearchMovie.addTextChangedListener(object :TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
@@ -76,34 +80,35 @@ class SearchMovieFragment : Fragment() {
                     binding.progressBarLoadingSearchMovies.visibility = View.VISIBLE
                     string = s.toString()
                     Handler().postDelayed({
+                        pageMovieSearch = 1
                         movieAndTvSeriesSearchViewModel.getMoviesSearch("en-US",string, pageMovieSearch,false)
+                        Log.d("Load search","$pageMovieSearch")
                     },2000)
                 }
                 if(s == null){
                     binding.recyclerViewResultsMovie.visibility = View.INVISIBLE
-
                 }
             }
         })
-//        binding.recyclerViewResultsMovie.addOnScrollListener(object : RecyclerView.OnScrollListener(){
-//            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-//                super.onScrollStateChanged(recyclerView, newState)
-//            }
-//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-//                super.onScrolled(recyclerView, dx, dy)
-//                if (!recyclerView.canScrollVertically(1) && dy > 0) {
-//                    if(pageMovieSearch < totalPagesMovieSearch){
-//                        Handler().postDelayed({
-//                            pageMovieSearch+=1
-//                            movieAndTvSeriesSearchViewModel.getMoviesSearch("en-US",string,pageMovieSearch,false)
-//                        },2000)
-//                    }else {
-//                        Toast.makeText(requireContext(),"All of Movies is displayed",
-//                            Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//            }
-//        })
+        binding.recyclerViewResultsMovie.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+            }
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (!recyclerView.canScrollVertically(1) && dy > 0) {
+                    if(pageMovieSearch < totalPagesMovieSearch){
+                        Handler().postDelayed({
+                            pageMovieSearch+=1
+                            movieAndTvSeriesSearchViewModel.getMoviesSearch("en-US",string,pageMovieSearch,false)
+                        },2000)
+                    }else {
+                        Toast.makeText(requireContext(),"All of Movies is displayed",
+                            Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        })
         binding.imageViewButtonChangePage.setOnClickListener {
             requireActivity().supportFragmentManager
                 .beginTransaction()

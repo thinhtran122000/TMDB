@@ -2,6 +2,7 @@ package com.example.tmdb.adapters.trending
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.example.tmdb.R
 import com.example.tmdb.databinding.ItemTrendingMovieRelatedLayoutBinding
 import com.example.tmdb.models.movies.RelatedMovie
 import com.example.tmdb.utils.Credentials
+import com.example.tmdb.views.TrendingMovieDetailsActivity
 import java.time.LocalDate
 import java.time.format.DateTimeParseException
 
@@ -33,13 +35,20 @@ RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         val colorYear = context.resources.getColor(R.color.gray_100)
         if(holder is RelatedTrendingMoviesVH){
             var relatedMovie:RelatedMovie = arrayListRelatedTrendingMovies!![position]
+            val relatedTrendingMovieTitle = relatedMovie.title
             try {
-                val relatedTrendingMoviesReleaseDate = LocalDate.parse(relatedMovie.releaseDate)
-                val relatedTrendingMoviesReleaseYear = relatedTrendingMoviesReleaseDate.year
-                val relatedTrendingMovieTitle = relatedMovie.title
-                holder.itemTrendingMovieRelatedLayoutBinding.textViewTitleRTM.text =
-                    Html.fromHtml("<font color=$colorTitle>$relatedTrendingMovieTitle</font>" +
-                            " <font color=$colorYear>($relatedTrendingMoviesReleaseYear)</font>")
+                if(relatedMovie.releaseDate?.isNotEmpty() == true){
+                    val relatedTrendingMoviesReleaseDate = LocalDate.parse(relatedMovie.releaseDate)
+                    val relatedTrendingMoviesReleaseYear = relatedTrendingMoviesReleaseDate.year
+                    holder.itemTrendingMovieRelatedLayoutBinding.textViewTitleRTM.text =
+                        Html.fromHtml("<font color=$colorTitle>$relatedTrendingMovieTitle</font>" +
+                                " <font color=$colorYear>($relatedTrendingMoviesReleaseYear)</font>")
+                }else{
+                    holder.itemTrendingMovieRelatedLayoutBinding.textViewTitleRTM.text =
+                        Html.fromHtml("<font color=$colorTitle>$relatedTrendingMovieTitle</font>" +
+                                " <font color=$colorYear>(Unknown)</font>")
+                }
+
             }catch (e:DateTimeParseException){
                 Toast.makeText(context,e.message, Toast.LENGTH_SHORT).show()
             }
@@ -57,6 +66,12 @@ RecyclerView.Adapter<RecyclerView.ViewHolder>(){
                     .into(holder.itemTrendingMovieRelatedLayoutBinding.imageViewPosterRTM)
             }
             holder.setIsRecyclable(false)
+            holder.itemTrendingMovieRelatedLayoutBinding.root.setOnClickListener {
+                val intent = Intent(holder.itemView.context, TrendingMovieDetailsActivity::class.java)
+                intent.putExtra("Trending movie id",relatedMovie.id)
+                intent.putExtra("Trending movie vote average",relatedMovie.voteAverage)
+                holder.itemView.context.startActivity(intent)
+            }
         }
     }
 

@@ -18,6 +18,7 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.Path
 import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
@@ -173,6 +174,7 @@ interface APIService {
         @Query("page") page:Int,
         @Query("include_adult") includeAdult:Boolean
     ):Call<MoviesSearchResponse>
+
     @GET("search/tv")
     fun searchTvSeries(
         @Query("api_key") apiKey: String,

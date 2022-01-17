@@ -7,78 +7,39 @@
     tools:context=".views.ProfileFragment"
     android:background="@color/black_200">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageViewProfile"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/no_profile_image"
+        app:civ_border_color="@color/orange"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewEditPhotoProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Edit your photo"
+        android:text="Edit photo"
         android:textColor="@color/white"
-        android:textSize="15dp"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageViewProfile"
         app:layout_constraintStart_toStartOf="@+id/imageViewProfile"
         app:layout_constraintTop_toBottomOf="@+id/imageViewProfile"
         app:layout_constraintVertical_bias="0.0" />
 
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonLogout"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/custom_button_logout"
-        android:letterSpacing="0.03"
-        android:text="Log out"
-        android:textColor="@color/orange"
-        android:textSize="18sp"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/buttonSave"
-        app:layout_constraintStart_toStartOf="@+id/buttonSave"
-        app:layout_constraintTop_toBottomOf="@+id/buttonChangePasswordProfile"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonSave"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/custom_button_save"
-        android:letterSpacing="0.03"
-        android:text="Save"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textViewUserEmail"
-        app:layout_constraintStart_toStartOf="@+id/textViewUserEmail"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUserEmail"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonChangePasswordProfile"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/background_change_password_button"
-        android:letterSpacing="0.03"
-        android:text="Change Password"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/buttonSave"
-        app:layout_constraintStart_toStartOf="@+id/buttonSave"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSave"
-        app:layout_constraintVertical_bias="0.0" />
-
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewProfileUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:text="Name"
         android:textColor="@color/white"
@@ -100,9 +61,8 @@
         android:paddingStart="20dp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textViewProfileUserName"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewProfileUserName"
+        app:layout_constraintEnd_toEndOf="@+id/textViewEditPhotoProfile"
+        app:layout_constraintStart_toStartOf="@+id/textViewEditPhotoProfile"
         app:layout_constraintTop_toBottomOf="@+id/textViewProfileUserName"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -114,14 +74,27 @@
         android:text="Email"
         android:textColor="@color/white"
         android:textSize="18dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editTextUserName"
+        app:layout_constraintEnd_toEndOf="@+id/textViewProfileUserName"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextUserName"
+        app:layout_constraintStart_toStartOf="@+id/textViewProfileUserName"
         app:layout_constraintTop_toBottomOf="@+id/editTextUserName"
         app:layout_constraintVertical_bias="0.0" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewStatus"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/verify"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewUserEmail"
+        app:layout_constraintStart_toStartOf="@+id/textViewUserEmail"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserEmail"
+        app:layout_constraintVertical_bias="0.0" />
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewUserEmail"
         android:layout_width="350dp"
@@ -140,18 +113,67 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewProfileUserEmail"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ProgressBar
-        android:id="@+id/progressBarProfile"
-        android:layout_width="50dp"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonSave"
+        android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/custom_button_save"
+        android:letterSpacing="0.03"
+        android:text="Save"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewUserEmail"
+        app:layout_constraintStart_toStartOf="@+id/textViewUserEmail"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStatus"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonChangePasswordProfile"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/background_change_password_button"
+        android:letterSpacing="0.03"
+        android:text="Change Password"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonSave"
+        app:layout_constraintStart_toStartOf="@+id/buttonSave"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSave"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonLogout"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_button_logout"
+        android:letterSpacing="0.03"
+        android:text="Log out"
+        android:textAllCaps="false"
+        android:textColor="@color/orange"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonSave"
+        app:layout_constraintStart_toStartOf="@+id/buttonSave"
+        app:layout_constraintTop_toBottomOf="@+id/buttonChangePasswordProfile"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ProgressBar
+        android:id="@+id/progressBarLogout"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:indeterminateTint="@color/white"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/progressBarChangeProfile"
+        app:layout_constraintEnd_toEndOf="@+id/progressBarChangeProfile"
+        app:layout_constraintStart_toStartOf="@+id/progressBarChangeProfile"
+        app:layout_constraintTop_toTopOf="@+id/progressBarChangeProfile" />
 
     <ProgressBar
         android:id="@+id/progressBarChangeProfile"
@@ -164,16 +186,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageViewProfile"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="50dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/no_profile_image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+    <ProgressBar
+        android:id="@+id/progressBarChangeImage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:indeterminateTint="@color/orange"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewProfile"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewProfile"
+        app:layout_constraintStart_toStartOf="@+id/imageViewProfile"
+        app:layout_constraintTop_toTopOf="@+id/imageViewProfile" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!--<androidx.appcompat.widget.AppCompatImageView-->
+<!--android:id="@+id/imageViewProfile"-->
+<!--android:layout_width="150dp"-->
+<!--android:layout_height="150dp"-->
+<!--android:layout_marginTop="40dp"-->
+<!--android:scaleType="fitXY"-->
+<!--app:srcCompat="@drawable/no_profile_image"-->
+<!--app:layout_constraintBottom_toBottomOf="parent"-->
+<!--app:layout_constraintEnd_toEndOf="parent"-->
+<!--app:layout_constraintStart_toStartOf="parent"-->
+<!--app:layout_constraintTop_toTopOf="parent"-->
+<!--app:layout_constraintVertical_bias="0.0" />-->

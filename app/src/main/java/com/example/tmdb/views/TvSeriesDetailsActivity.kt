@@ -141,48 +141,11 @@ class TvSeriesDetailsActivity : AppCompatActivity() {
                 binding.textViewLastAirDateTS.text = "Unknown last air date"
             }
             if(it?.genres?.isNotEmpty()==true){
-                if(it.genres!!.size == 7){
-                    staggeredGridLayoutManager = StaggeredGridLayoutManager(7,StaggeredGridLayoutManager.HORIZONTAL)
-                    binding.recyclerViewGenreTS.layoutManager = staggeredGridLayoutManager
-                    arrayListTvSeriesGenre.addAll(it.genres!!)
-                    recyclerViewTvSeriesGenresAdapter.notifyDataSetChanged()
-                }
-                if(it.genres!!.size == 6){
-                    staggeredGridLayoutManager = StaggeredGridLayoutManager(6,StaggeredGridLayoutManager.HORIZONTAL)
-                    binding.recyclerViewGenreTS.layoutManager = staggeredGridLayoutManager
-                    arrayListTvSeriesGenre.addAll(it.genres!!)
-                    recyclerViewTvSeriesGenresAdapter.notifyDataSetChanged()
-                }
-                if(it.genres!!.size == 5){
-                    staggeredGridLayoutManager = StaggeredGridLayoutManager(5,StaggeredGridLayoutManager.HORIZONTAL)
-                    binding.recyclerViewGenreTS.layoutManager = staggeredGridLayoutManager
-                    arrayListTvSeriesGenre.addAll(it.genres!!)
-                    recyclerViewTvSeriesGenresAdapter.notifyDataSetChanged()
-                }
-                if(it.genres!!.size == 4){
-                    staggeredGridLayoutManager = StaggeredGridLayoutManager(4,StaggeredGridLayoutManager.HORIZONTAL)
-                    binding.recyclerViewGenreTS.layoutManager = staggeredGridLayoutManager
-                    arrayListTvSeriesGenre.addAll(it.genres!!)
-                    recyclerViewTvSeriesGenresAdapter.notifyDataSetChanged()
-                }
-                if(it.genres!!.size == 3){
-                    staggeredGridLayoutManager = StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.HORIZONTAL)
-                    binding.recyclerViewGenreTS.layoutManager = staggeredGridLayoutManager
-                    arrayListTvSeriesGenre.addAll(it.genres!!)
-                    recyclerViewTvSeriesGenresAdapter.notifyDataSetChanged()
-                }
-                if(it.genres!!.size == 2){
-                    staggeredGridLayoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.HORIZONTAL)
-                    binding.recyclerViewGenreTS.layoutManager = staggeredGridLayoutManager
-                    arrayListTvSeriesGenre.addAll(it.genres!!)
-                    recyclerViewTvSeriesGenresAdapter.notifyDataSetChanged()
-                }
-                if(it.genres!!.size == 1){
-                    staggeredGridLayoutManager = StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL)
-                    binding.recyclerViewGenreTS.layoutManager = staggeredGridLayoutManager
-                    arrayListTvSeriesGenre.addAll(it.genres!!)
-                    recyclerViewTvSeriesGenresAdapter.notifyDataSetChanged()
-                }
+                staggeredGridLayoutManager = StaggeredGridLayoutManager(it.genres!!.size,StaggeredGridLayoutManager.HORIZONTAL)
+                binding.recyclerViewGenreTS.layoutManager = staggeredGridLayoutManager
+                arrayListTvSeriesGenre.addAll(it.genres!!)
+                recyclerViewTvSeriesGenresAdapter.notifyDataSetChanged()
+
             }
             if(it?.overview?.isNotEmpty() == true){
                 binding.textViewOverviewTS.text = it.overview + " "

@@ -1,6 +1,7 @@
 package com.example.tmdb.adapters.nowplaying
 
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.text.Html
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import com.example.tmdb.R
 import com.example.tmdb.databinding.ItemNowPlayingMovieRelatedLayoutBinding
 import com.example.tmdb.models.movies.RelatedMovie
 import com.example.tmdb.utils.Credentials
+import com.example.tmdb.views.NowPlayingMovieDetailsActivity
 import java.time.LocalDate
 import java.time.format.DateTimeParseException
 
@@ -32,13 +34,20 @@ class RecyclerViewNowPlayingMovieRelatedAdapter(private var context: Context,
         val colorYear = context.resources.getColor(R.color.gray_100)
         if(holder is RelatedNowPlayingMoviesVH){
             var relatedMovie:RelatedMovie = arrayListRelatedNowPlayingMovies!![position]
+            val relatedNowPLayingMovieTitle = relatedMovie.title
             try {
-                val relatedNowPLayingMoviesReleaseDate = LocalDate.parse(relatedMovie.releaseDate)
-                val relatedNowPLayingMoviesReleaseYear = relatedNowPLayingMoviesReleaseDate.year
-                val relatedNowPLayingMovieTitle = relatedMovie.title
-                holder.itemNowPlayingMovieRelatedLayoutBinding.textViewTitleRNPM.text =
-                    Html.fromHtml("<font color=$colorTitle>$relatedNowPLayingMovieTitle</font>" +
-                            " <font color=$colorYear>($relatedNowPLayingMoviesReleaseYear)</font>")
+                if(relatedMovie.releaseDate?.isNotEmpty() == true){
+                    val relatedNowPLayingMoviesReleaseDate = LocalDate.parse(relatedMovie.releaseDate)
+                    val relatedNowPLayingMoviesReleaseYear = relatedNowPLayingMoviesReleaseDate.year
+                    holder.itemNowPlayingMovieRelatedLayoutBinding.textViewTitleRNPM.text =
+                        Html.fromHtml("<font color=$colorTitle>$relatedNowPLayingMovieTitle</font>" +
+                                " <font color=$colorYear>($relatedNowPLayingMoviesReleaseYear)</font>")
+                }else{
+                    holder.itemNowPlayingMovieRelatedLayoutBinding.textViewTitleRNPM.text =
+                        Html.fromHtml("<font color=$colorTitle>$relatedNowPLayingMovieTitle</font>" +
+                                " <font color=$colorYear>(Unknown)</font>")
+                }
+
             }catch (e: DateTimeParseException){
                 Toast.makeText(context,e.message, Toast.LENGTH_SHORT).show()
             }
@@ -56,6 +65,12 @@ class RecyclerViewNowPlayingMovieRelatedAdapter(private var context: Context,
                     .into(holder.itemNowPlayingMovieRelatedLayoutBinding.imageViewPosterRNPM)
             }
             holder.setIsRecyclable(false)
+            holder.itemNowPlayingMovieRelatedLayoutBinding.root.setOnClickListener {
+                val intent = Intent(holder.itemView.context, NowPlayingMovieDetailsActivity::class.java)
+                intent.putExtra("Now playing movie id",relatedMovie.id)
+                intent.putExtra("Now playing movie vote average",relatedMovie.voteAverage)
+                holder.itemView.context.startActivity(intent)
+            }
         }
     }
 

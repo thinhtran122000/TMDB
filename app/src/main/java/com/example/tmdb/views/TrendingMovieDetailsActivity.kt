@@ -110,37 +110,10 @@ class TrendingMovieDetailsActivity : AppCompatActivity() {
                 binding.textViewRunTimeTM.text = "Unknown runtime movie"
             }
             if(it?.genres?.isNotEmpty() == true){
-                if(it.genres!!.size == 5){
-                    staggeredGridLayoutManager = StaggeredGridLayoutManager(5,StaggeredGridLayoutManager.HORIZONTAL)
+                    staggeredGridLayoutManager = StaggeredGridLayoutManager(it.genres!!.size,StaggeredGridLayoutManager.HORIZONTAL)
                     binding.recyclerViewGenreTM.layoutManager = staggeredGridLayoutManager
                     arrayListTrendingMovieGenre.addAll(it.genres!!)
                     recyclerViewTrendingMovieGenresAdapter.notifyDataSetChanged()
-                }
-                if(it.genres!!.size == 4){
-                    staggeredGridLayoutManager = StaggeredGridLayoutManager(4,StaggeredGridLayoutManager.HORIZONTAL)
-                    binding.recyclerViewGenreTM.layoutManager = staggeredGridLayoutManager
-                    arrayListTrendingMovieGenre.addAll(it.genres!!)
-                    recyclerViewTrendingMovieGenresAdapter.notifyDataSetChanged()
-                }
-                if(it.genres!!.size == 3){
-                    staggeredGridLayoutManager = StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.HORIZONTAL)
-                    binding.recyclerViewGenreTM.layoutManager = staggeredGridLayoutManager
-                    arrayListTrendingMovieGenre.addAll(it.genres!!)
-                    recyclerViewTrendingMovieGenresAdapter.notifyDataSetChanged()
-                }
-                if(it.genres!!.size == 2){
-
-                    staggeredGridLayoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.HORIZONTAL)
-                    binding.recyclerViewGenreTM.layoutManager = staggeredGridLayoutManager
-                    arrayListTrendingMovieGenre.addAll(it.genres!!)
-                    recyclerViewTrendingMovieGenresAdapter.notifyDataSetChanged()
-                }
-                if(it.genres!!.size == 1){
-                    staggeredGridLayoutManager = StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL)
-                    binding.recyclerViewGenreTM.layoutManager = staggeredGridLayoutManager
-                    arrayListTrendingMovieGenre.addAll(it.genres!!)
-                    recyclerViewTrendingMovieGenresAdapter.notifyDataSetChanged()
-                }
             }
             if(it?.voteAverage!=null){
                 if(it.voteAverage!! >= voteAverageTM){

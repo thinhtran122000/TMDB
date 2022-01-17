@@ -3,4 +3,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sign_up">Don\'t have an Account? <b>Sign up</b> now!</string>
     <string name="sign_in">Already have an Account? <b>Sign in</b> now!</string>
+    <string name="verify">Your email is not verified yet. <u>Verify now!</u></string>
 </resources>
