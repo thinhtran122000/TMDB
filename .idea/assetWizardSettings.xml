@@ -80,7 +80,7 @@
                                               <map>
                                                 <entry key="color" value="000000" />
                                                 <entry key="imagePath" value="C:\Users\Windows\Pictures\logo_TMDB.png" />
-                                                <entry key="scalingPercent" value="90" />
+                                                <entry key="scalingPercent" value="75" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -115,6 +115,8 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ffffff" />
+                                      <entry key="legacyIconShape" value="CIRCLE" />
+                                      <entry key="outputName" value="ic_tmdb" />
                                     </map>
                                   </option>
                                 </PersistentState>
