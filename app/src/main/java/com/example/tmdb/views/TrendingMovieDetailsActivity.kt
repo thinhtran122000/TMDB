@@ -11,9 +11,7 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.recyclerview.widget.*
 import com.bumptech.glide.Glide
 import com.example.tmdb.R
 import com.example.tmdb.adapters.trending.RecyclerViewTrendingMovieCastAdapter
@@ -26,6 +24,7 @@ import com.example.tmdb.models.movies.RelatedMovie
 import com.example.tmdb.utils.Credentials
 import com.example.tmdb.viewmodels.TrendingMovieDetailsViewModel
 import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -36,6 +35,7 @@ class TrendingMovieDetailsActivity : AppCompatActivity() {
     private lateinit var recyclerViewTrendingMovieCastAdapter: RecyclerViewTrendingMovieCastAdapter
     private lateinit var recyclerViewTrendingMovieRelatedAdapter: RecyclerViewTrendingMovieRelatedAdapter
     private lateinit var staggeredGridLayoutManager: StaggeredGridLayoutManager
+    private lateinit var gridLayoutManager: GridLayoutManager
     private lateinit var linearLayoutManager: LinearLayoutManager
     private var arrayListTrendingMovieGenre:ArrayList<MovieGenres> = arrayListOf()
     private var arrayListTrendingMovieCast: ArrayList<MovieCast> = arrayListOf()
@@ -66,15 +66,16 @@ class TrendingMovieDetailsActivity : AppCompatActivity() {
         // Setting recycler view adapter and layout for trending movie credits list
         recyclerViewTrendingMovieCastAdapter = RecyclerViewTrendingMovieCastAdapter(this,arrayListTrendingMovieCast)
         recyclerViewTrendingMovieCastAdapter.setHasStableIds(true)
-        linearLayoutManager = object :LinearLayoutManager(this,HORIZONTAL,false){
-            override fun canScrollHorizontally(): Boolean {
+        gridLayoutManager = object :GridLayoutManager(this,3, VERTICAL,false){
+            override fun canScrollVertically(): Boolean {
                 return false
             }
         }
 //        binding.recyclerViewCastAndCrewTM.setHasFixedSize(true)
         binding.recyclerViewCastAndCrewTM.itemAnimator = DefaultItemAnimator()
-        binding.recyclerViewCastAndCrewTM.layoutManager = linearLayoutManager
+        binding.recyclerViewCastAndCrewTM.layoutManager = gridLayoutManager
         binding.recyclerViewCastAndCrewTM.adapter = recyclerViewTrendingMovieCastAdapter
+
         // Setting recycler view adapter and layout for related trending movie list
         recyclerViewTrendingMovieRelatedAdapter = RecyclerViewTrendingMovieRelatedAdapter(this,arrayListRelatedTrendingMovies)
         linearLayoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
@@ -110,10 +111,13 @@ class TrendingMovieDetailsActivity : AppCompatActivity() {
                 binding.textViewRunTimeTM.text = "Unknown runtime movie"
             }
             if(it?.genres?.isNotEmpty() == true){
-                    staggeredGridLayoutManager = StaggeredGridLayoutManager(it.genres!!.size,StaggeredGridLayoutManager.HORIZONTAL)
-                    binding.recyclerViewGenreTM.layoutManager = staggeredGridLayoutManager
-                    arrayListTrendingMovieGenre.addAll(it.genres!!)
-                    recyclerViewTrendingMovieGenresAdapter.notifyDataSetChanged()
+                staggeredGridLayoutManager = StaggeredGridLayoutManager(it.genres!!.size,StaggeredGridLayoutManager.HORIZONTAL)
+                binding.recyclerViewGenreTM.layoutManager = staggeredGridLayoutManager
+                arrayListTrendingMovieGenre.addAll(it.genres!!)
+                recyclerViewTrendingMovieGenresAdapter.notifyDataSetChanged()
+            }else{
+                binding.recyclerViewGenreTM.visibility = View.GONE
+                binding.textViewNoDataAvailableGTM.visibility = View.VISIBLE
             }
             if(it?.voteAverage!=null){
                 if(it.voteAverage!! >= voteAverageTM){
@@ -146,6 +150,7 @@ class TrendingMovieDetailsActivity : AppCompatActivity() {
         trendingMovieDetailsViewModel.mutableTrendingMovieCreditsLiveData.observe(this, Observer {
             if(it?.cast?.isNotEmpty() == false && it.crew?.isNotEmpty() == false){
                 binding.textViewMoreTM.visibility = View.INVISIBLE
+                binding.textViewNoDataAvailableCACTM.visibility = View.VISIBLE
             }
             if((it?.cast?.isNotEmpty() == true && it.crew?.isNotEmpty() == true)||
                 (it?.cast?.isNotEmpty() == false && it.crew?.isNotEmpty() == true)||
@@ -184,6 +189,9 @@ class TrendingMovieDetailsActivity : AppCompatActivity() {
             if(it?.results?.isNotEmpty() == true){
                 arrayListRelatedTrendingMovies.addAll(it.results!!)
                 recyclerViewTrendingMovieRelatedAdapter.notifyDataSetChanged()
+            }else{
+                binding.recyclerViewRelatedMovieTM.visibility = View.GONE
+                binding.textViewNoDataAvailableRTM.visibility = View.VISIBLE
             }
         })
         // Call api trending movie details
@@ -198,9 +206,9 @@ class TrendingMovieDetailsActivity : AppCompatActivity() {
 
     @SuppressLint("SimpleDateFormat")
     private fun formatTrendingMovieReleaseDate(releaseDate: String): String {
-        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
         val dateFormat = simpleDateFormat.parse(releaseDate)
-        val secondSimpleDateFormat = SimpleDateFormat("MMMM dd, yyyy")
+        val secondSimpleDateFormat = SimpleDateFormat("MMMM dd, yyyy",Locale.ENGLISH)
         return secondSimpleDateFormat.format(dateFormat!!)
     }
 }

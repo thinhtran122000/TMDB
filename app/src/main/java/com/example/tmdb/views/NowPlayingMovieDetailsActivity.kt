@@ -10,6 +10,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
@@ -24,6 +25,8 @@ import com.example.tmdb.models.movies.RelatedMovie
 import com.example.tmdb.utils.Credentials
 import com.example.tmdb.viewmodels.NowPlayingMovieDetailsViewModel
 import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class NowPlayingMovieDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNowPlayingMovieDetailsBinding
@@ -33,6 +36,7 @@ class NowPlayingMovieDetailsActivity : AppCompatActivity() {
     private lateinit var recyclerViewNowPlayingMovieRelatedAdapter: RecyclerViewNowPlayingMovieRelatedAdapter
     private lateinit var staggeredGridLayoutManager: StaggeredGridLayoutManager
     private lateinit var linearLayoutManager: LinearLayoutManager
+    private lateinit var gridLayoutManager: GridLayoutManager
     private var arrayListNowPlayingMovieGenre:ArrayList<MovieGenres> = arrayListOf()
     private var arrayListNowPlayingMovieCast: ArrayList<MovieCast> = arrayListOf()
     private var arrayListRelatedNowPlayingMovies:ArrayList<RelatedMovie> = arrayListOf()
@@ -61,14 +65,14 @@ class NowPlayingMovieDetailsActivity : AppCompatActivity() {
         // Setting recycler view adapter and layout for now playing movie credits list
         recyclerViewNowPlayingMovieCastAdapter = RecyclerViewNowPlayingMovieCastAdapter(this,arrayListNowPlayingMovieCast)
         recyclerViewNowPlayingMovieCastAdapter.setHasStableIds(true)
-        linearLayoutManager = object :LinearLayoutManager(this,HORIZONTAL,false){
-            override fun canScrollHorizontally(): Boolean {
+        gridLayoutManager = object :GridLayoutManager(this,3, VERTICAL,false){
+            override fun canScrollVertically(): Boolean {
                 return false
             }
         }
 //        binding.recyclerViewCastAndCrewNPM.setHasFixedSize(true)
         binding.recyclerViewCastAndCrewNPM.itemAnimator = DefaultItemAnimator()
-        binding.recyclerViewCastAndCrewNPM.layoutManager = linearLayoutManager
+        binding.recyclerViewCastAndCrewNPM.layoutManager = gridLayoutManager
         binding.recyclerViewCastAndCrewNPM.adapter = recyclerViewNowPlayingMovieCastAdapter
         // Setting recycler view adapter and layout for related now playing movie list
         recyclerViewNowPlayingMovieRelatedAdapter = RecyclerViewNowPlayingMovieRelatedAdapter(this,arrayListRelatedNowPlayingMovies)
@@ -105,10 +109,13 @@ class NowPlayingMovieDetailsActivity : AppCompatActivity() {
                 binding.textViewRunTimeNPM.text = "Unknown runtime movie"
             }
             if(it?.genres?.isNotEmpty() == true){
-                    staggeredGridLayoutManager = StaggeredGridLayoutManager(it.genres!!.size,StaggeredGridLayoutManager.HORIZONTAL)
-                    binding.recyclerViewGenreNPM.layoutManager = staggeredGridLayoutManager
-                    arrayListNowPlayingMovieGenre.addAll(it.genres!!)
-                    recyclerViewNowPlayingMovieGenresAdapter.notifyDataSetChanged()
+                staggeredGridLayoutManager = StaggeredGridLayoutManager(it.genres!!.size,StaggeredGridLayoutManager.HORIZONTAL)
+                binding.recyclerViewGenreNPM.layoutManager = staggeredGridLayoutManager
+                arrayListNowPlayingMovieGenre.addAll(it.genres!!)
+                recyclerViewNowPlayingMovieGenresAdapter.notifyDataSetChanged()
+            }else{
+                binding.recyclerViewGenreNPM.visibility = View.GONE
+                binding.textViewNoDataAvailableGNPM.visibility = View.VISIBLE
             }
             if(it?.voteAverage!=null){
                 if(it.voteAverage!! >= voteAverageNPM){
@@ -141,6 +148,7 @@ class NowPlayingMovieDetailsActivity : AppCompatActivity() {
         nowPlayingMovieDetailsViewModel.mutableNowPlayingMovieCreditsLiveData.observe(this, Observer {
             if(it?.cast?.isNotEmpty() == false && it.crew?.isNotEmpty() == false){
                 binding.textViewMoreNPM.visibility = View.INVISIBLE
+                binding.textViewNoDataAvailableCACNPM.visibility = View.VISIBLE
             }
             if((it?.cast?.isNotEmpty() == true && it.crew?.isNotEmpty() == true)||
                 (it?.cast?.isNotEmpty() == false && it.crew?.isNotEmpty() == true)||
@@ -179,6 +187,9 @@ class NowPlayingMovieDetailsActivity : AppCompatActivity() {
             if(it?.results?.isNotEmpty() == true){
                 arrayListRelatedNowPlayingMovies.addAll(it.results!!)
                 recyclerViewNowPlayingMovieRelatedAdapter.notifyDataSetChanged()
+            }else{
+                binding.recyclerViewRelatedMovieNPM.visibility = View.GONE
+                binding.textViewNoDataAvailableRNPM.visibility = View.VISIBLE
             }
         })
         // Call api now playing movie details
@@ -192,9 +203,9 @@ class NowPlayingMovieDetailsActivity : AppCompatActivity() {
     }
     @SuppressLint("SimpleDateFormat")
     private fun formatNowPlayingMovieReleaseDate(releaseDate: String): String {
-        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
         val dateFormat = simpleDateFormat.parse(releaseDate)
-        val secondSimpleDateFormat = SimpleDateFormat("MMMM dd, yyyy")
+        val secondSimpleDateFormat = SimpleDateFormat("MMMM dd, yyyy",Locale.ENGLISH)
         return secondSimpleDateFormat.format(dateFormat!!)
     }
 }

@@ -10,6 +10,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
@@ -26,6 +27,8 @@ import com.example.tmdb.models.tvseriescredits.TvSeriesCast
 import com.example.tmdb.utils.Credentials
 import com.example.tmdb.viewmodels.TvSeriesDetailsViewModel
 import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class TvSeriesDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTvSeriesDetailsBinding
@@ -36,6 +39,7 @@ class TvSeriesDetailsActivity : AppCompatActivity() {
     private lateinit var recyclerViewTvSeriesRelatedAdapter: RecyclerViewTvSeriesRelatedAdapter
     private lateinit var staggeredGridLayoutManager: StaggeredGridLayoutManager
     private lateinit var linearLayoutManager: LinearLayoutManager
+    private lateinit var gridLayoutManager: GridLayoutManager
     private var arrayListTvSeriesGenre:ArrayList<TvSeriesGenres> = arrayListOf()
     private var arrayListTvSeriesCast:ArrayList<TvSeriesCast> = arrayListOf()
     private var arrayListTvSeriesSeasons:ArrayList<TvSeriesSeasons> = arrayListOf()
@@ -65,14 +69,14 @@ class TvSeriesDetailsActivity : AppCompatActivity() {
         // Setting recycler view adapter and layout for tv series credits list
         recyclerViewTvSeriesCastAdapter = RecyclerViewTvSeriesCastAdapter(this,arrayListTvSeriesCast)
         recyclerViewTvSeriesCastAdapter.setHasStableIds(true)
-        linearLayoutManager = object :LinearLayoutManager(this,HORIZONTAL,false){
-            override fun canScrollHorizontally(): Boolean {
+        gridLayoutManager = object :GridLayoutManager(this,3, VERTICAL,false){
+            override fun canScrollVertically(): Boolean {
                 return false
             }
         }
 //        binding.recyclerViewCastAndCrewTS.setHasFixedSize(true)
         binding.recyclerViewCastAndCrewTS.itemAnimator = DefaultItemAnimator()
-        binding.recyclerViewCastAndCrewTS.layoutManager = linearLayoutManager
+        binding.recyclerViewCastAndCrewTS.layoutManager = gridLayoutManager
         binding.recyclerViewCastAndCrewTS.adapter = recyclerViewTvSeriesCastAdapter
         // Setting recycler view adapter and layout for tv series broadcasting seasons list
         recyclerViewTvSeriesBroadcastingSeasonsAdapter =
@@ -145,7 +149,9 @@ class TvSeriesDetailsActivity : AppCompatActivity() {
                 binding.recyclerViewGenreTS.layoutManager = staggeredGridLayoutManager
                 arrayListTvSeriesGenre.addAll(it.genres!!)
                 recyclerViewTvSeriesGenresAdapter.notifyDataSetChanged()
-
+            }else{
+                binding.recyclerViewGenreTS.visibility = View.GONE
+                binding.textViewNoDataAvailableGTS.visibility = View.VISIBLE
             }
             if(it?.overview?.isNotEmpty() == true){
                 binding.textViewOverviewTS.text = it.overview + " "
@@ -155,6 +161,9 @@ class TvSeriesDetailsActivity : AppCompatActivity() {
             if(it?.seasons?.isNotEmpty() == true){
                 arrayListTvSeriesSeasons.addAll(it.seasons!!)
                 recyclerViewTvSeriesBroadcastingSeasonsAdapter.notifyDataSetChanged()
+            }else{
+                binding.recyclerViewBroadcastingSeasonTS.visibility = View.GONE
+                binding.textViewNoDataAvailableBSTS.visibility = View.VISIBLE
             }
         })
         tvSeriesDetailsViewModel.mutableTvSeriesVideoLiveData.observe(this, Observer {
@@ -173,6 +182,7 @@ class TvSeriesDetailsActivity : AppCompatActivity() {
         tvSeriesDetailsViewModel.mutableTvSeriesCreditsLiveData.observe(this, Observer {
             if(it?.cast?.isNotEmpty() == false && it.crew?.isNotEmpty() == false){
                 binding.textViewMoreTS.visibility = View.INVISIBLE
+                binding.textViewNoDataAvailableCACTS.visibility = View.VISIBLE
             }
             if((it?.cast?.isNotEmpty() == true && it.crew?.isNotEmpty() == true)||
                 (it?.cast?.isNotEmpty() == false && it.crew?.isNotEmpty() == true)||
@@ -211,6 +221,9 @@ class TvSeriesDetailsActivity : AppCompatActivity() {
             if(it?.results?.isNotEmpty() == true){
                 arrayListRelatedTvSeries.addAll(it.results!!)
                 recyclerViewTvSeriesRelatedAdapter.notifyDataSetChanged()
+            }else{
+                binding.recyclerViewRelatedMovieTS.visibility = View.GONE
+                binding.textViewNoDataAvailableRTS.visibility = View.VISIBLE
             }
         })
         // Call api tv series details
@@ -224,9 +237,9 @@ class TvSeriesDetailsActivity : AppCompatActivity() {
     }
     @SuppressLint("SimpleDateFormat")
     private fun formatTvSeriesReleaseDate(releaseDate: String): String {
-        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
         val dateFormat = simpleDateFormat.parse(releaseDate)
-        val secondSimpleDateFormat = SimpleDateFormat("MMMM dd, yyyy")
+        val secondSimpleDateFormat = SimpleDateFormat("MMMM dd, yyyy",Locale.ENGLISH)
         return secondSimpleDateFormat.format(dateFormat!!)
     }
 }

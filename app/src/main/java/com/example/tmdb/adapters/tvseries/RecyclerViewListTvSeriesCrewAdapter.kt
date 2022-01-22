@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.example.tmdb.views.ListTvSeriesCrewDetailsActivity
+import com.example.tmdb.views.TvSeriesCrewDetailsActivity
 import com.example.tmdb.R
 import com.example.tmdb.databinding.ItemListTvSeriesCrewLayoutBinding
 import com.example.tmdb.models.tvseriescredits.TvSeriesCrew
@@ -61,7 +61,7 @@ class RecyclerViewListTvSeriesCrewAdapter(private var context: Context,
             }
             holder.setIsRecyclable(false)
             holder.itemView.setOnClickListener {
-                val intent = Intent(holder.itemView.context, ListTvSeriesCrewDetailsActivity::class.java)
+                val intent = Intent(holder.itemView.context, TvSeriesCrewDetailsActivity::class.java)
                 intent.putExtra("Tv series list crew name",tvSeriesCrew.name)
                 intent.putExtra("Tv series list crew gender",tvSeriesCrew.gender)
                 intent.putExtra("Tv series list crew job",tvSeriesCrew.job)

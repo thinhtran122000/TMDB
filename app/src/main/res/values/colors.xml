@@ -18,4 +18,5 @@
     <color name="gray_700">#515151</color>
     <color name="light_black">#21202A</color>
     <color name="icon_play_color">#66DADADA</color>
+    <color name="yellow">#FFEB3B</color>
 </resources>

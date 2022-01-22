@@ -183,4 +183,32 @@ interface APIService {
         @Query("query") query:String,
         @Query("include_adult") includeAdult:Boolean
     ):Call<TvSeriesSearchResponse>
+
+    @GET("movie/top_rated")
+    fun getTopRatedMovies(
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String,
+        @Query("page") page: Int
+    ):Call<TopRatedMoviesResponse>
+
+    @GET("movie/upcoming")
+    fun getUpComingMovies(
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String,
+        @Query("page") page: Int
+    ):Call<UpComingMoviesResponse>
+
+    @GET("movie/{movie_id}/videos")
+    fun getVideoUpComingMovie(
+        @Path("movie_id") movieId:Int,
+        @Query("api_key") apiKey:String,
+        @Query("language") language:String
+    ):Call<MovieVideoResponse>
+
+    @GET("movie/popular")
+    fun getPopularMovies(
+        @Query("api_key") apiKey: String,
+        @Query ("language") language: String,
+        @Query("page") page: Int
+    ):Call<PopularMoviesResponse>
 }

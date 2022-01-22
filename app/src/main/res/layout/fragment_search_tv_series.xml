@@ -61,6 +61,21 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextSearchTvSeries"
         app:layout_constraintVertical_bias="1.0" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewStatusSearchTvSeries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:letterSpacing="0.03"
+        android:lineHeight="25dp"
+        android:minHeight="48dp"
+        android:text="Search your favorite tv series now \n ʕ •ᴥ•ʔ"
+        android:textColor="@color/gray_100"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerViewResultsTvSeries"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewResultsTvSeries"
+        app:layout_constraintStart_toStartOf="@+id/recyclerViewResultsTvSeries"
+        app:layout_constraintTop_toTopOf="@+id/recyclerViewResultsTvSeries" />
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageViewBackButtonSearchTvSeries"
         android:layout_width="45dp"
@@ -77,16 +92,16 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/press_back_icon" />
 
-    <ProgressBar
-        android:id="@+id/progressBarLoadingSearchTvSeries"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminateDrawable="@drawable/gradient_progress"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerViewResultsTvSeries"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerViewResultsTvSeries"
-        app:layout_constraintStart_toStartOf="@+id/recyclerViewResultsTvSeries"
-        app:layout_constraintTop_toTopOf="@+id/recyclerViewResultsTvSeries" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--<ProgressBar-->
+<!--android:id="@+id/progressBarLoadingSearchTvSeries"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:indeterminateDrawable="@drawable/gradient_progress"-->
+<!--android:visibility="invisible"-->
+<!--app:layout_constraintBottom_toBottomOf="@+id/recyclerViewResultsTvSeries"-->
+<!--app:layout_constraintEnd_toEndOf="@+id/recyclerViewResultsTvSeries"-->
+<!--app:layout_constraintStart_toStartOf="@+id/recyclerViewResultsTvSeries"-->
+<!--app:layout_constraintTop_toTopOf="@+id/recyclerViewResultsTvSeries" />-->

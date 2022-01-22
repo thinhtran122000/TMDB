@@ -9,8 +9,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.tmdb.R
 import com.example.tmdb.adapters.searching.RecyclerViewTvSeriesSearchResultsAdapter
@@ -36,7 +38,7 @@ class SearchTvSeriesFragment : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("NotifyDataSetChanged")
+    @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         movieAndTvSeriesSearchViewModel = ViewModelProvider(this)[MovieAndTvSeriesSearchViewModel::class.java]
@@ -51,9 +53,12 @@ class SearchTvSeriesFragment : Fragment() {
         binding.recyclerViewResultsTvSeries.setHasFixedSize(true)
         binding.recyclerViewResultsTvSeries.itemAnimator = null
         movieAndTvSeriesSearchViewModel.mutableTvSeriesSearchLiveData.observe(requireActivity(), Observer {
-            if(it?.results !=null){
+            if(it?.results?.isNotEmpty() == true){
                 arrayListSearchTvSeriesResults.addAll(it.results!!)
                 recyclerViewTvSeriesSearchResultsAdapter.notifyDataSetChanged()
+            }else{
+                binding.textViewStatusSearchTvSeries.visibility = View.VISIBLE
+                binding.textViewStatusSearchTvSeries.text = "Can not found your favorite tv series \n ʕ = ᴥ = ʔ"
             }
             totalPagesTvSeriesSearch = it?.totalPages!!
         })
@@ -65,32 +70,52 @@ class SearchTvSeriesFragment : Fragment() {
 
             }
             override fun afterTextChanged(s: Editable?) {
-                if(s!= null){
+                if(s.toString().isNotEmpty()){
                     binding.recyclerViewResultsTvSeries.visibility = View.VISIBLE
+                    binding.textViewStatusSearchTvSeries.visibility = View.INVISIBLE
                     arrayListSearchTvSeriesResults.clear()
                     recyclerViewTvSeriesSearchResultsAdapter.notifyDataSetChanged()
-
-                    Handler().postDelayed({
-                        binding.progressBarLoadingSearchTvSeries.visibility = View.INVISIBLE
-                    },2000)
-                    binding.progressBarLoadingSearchTvSeries.visibility = View.VISIBLE
                     string = s.toString()
                     Handler().postDelayed({
+                        pageTvSeriesSearch = 1
                         movieAndTvSeriesSearchViewModel.getTvSeriesSearch("en-US",pageTvSeriesSearch,string,false)
                     },2000)
-                }
-                if(s == null){
+                }else{
                     binding.recyclerViewResultsTvSeries.visibility = View.INVISIBLE
-
+                    binding.textViewStatusSearchTvSeries.visibility = View.VISIBLE
                 }
             }
         })
+        binding.recyclerViewResultsTvSeries.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+            }
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (!recyclerView.canScrollVertically(1) && dy > 0) {
+                    if(pageTvSeriesSearch < totalPagesTvSeriesSearch){
+                        Handler().postDelayed({
+                            pageTvSeriesSearch+=1
+                            movieAndTvSeriesSearchViewModel.getMoviesSearch("en-US",string,pageTvSeriesSearch,false)
+                        },2000)
+                    }else {
+                        Toast.makeText(requireContext(),"All of Movies is displayed",
+                            Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        })
+
+
+
+
         binding.imageViewBackButtonSearchTvSeries.setOnClickListener {
             requireActivity().supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.fragmentSearch, SearchMovieFragment())
                 .commit()
         }
+
 //        binding.recyclerViewResultsMovie.addOnScrollListener(object : RecyclerView.OnScrollListener(){
 //            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
 //                super.onScrollStateChanged(recyclerView, newState)
@@ -111,5 +136,6 @@ class SearchTvSeriesFragment : Fragment() {
 //            }
 //        })
     }
+
 
 }

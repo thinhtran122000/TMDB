@@ -15,11 +15,11 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.tmdb.adapters.tvseries.RecyclerViewTvSeriesAdapter
 import com.example.tmdb.databinding.FragmentTvSeriesBinding
 import com.example.tmdb.models.tvseries.TvSeries
-import com.example.tmdb.viewmodels.MovieViewModel
+import com.example.tmdb.viewmodels.MoviesViewModel
 
 class TvSeriesFragment : Fragment() {
     private lateinit var binding: FragmentTvSeriesBinding
-    private lateinit var movieViewModel: MovieViewModel
+    private lateinit var moviesViewModel: MoviesViewModel
     private lateinit var recyclerViewTvSeriesAdapter: RecyclerViewTvSeriesAdapter
     private lateinit var staggeredGridLayoutManager: StaggeredGridLayoutManager
     private var arrayListTvSeries:ArrayList<TvSeries> = arrayListOf()
@@ -34,7 +34,7 @@ class TvSeriesFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        movieViewModel = ViewModelProvider(this)[MovieViewModel::class.java]
+        moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         recyclerViewTvSeriesAdapter = RecyclerViewTvSeriesAdapter(requireContext(),arrayListTvSeries)
         staggeredGridLayoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
         staggeredGridLayoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
@@ -44,14 +44,14 @@ class TvSeriesFragment : Fragment() {
         binding.recyclerViewTvSeries.layoutManager = staggeredGridLayoutManager
         binding.recyclerViewTvSeries.setHasFixedSize(true)
         binding.recyclerViewTvSeries.itemAnimator = null;
-        movieViewModel.mutableTvSeriesLiveData.observe(viewLifecycleOwner, Observer {
+        moviesViewModel.mutableTvSeriesLiveData.observe(viewLifecycleOwner, Observer {
             if(it?.results !=null){
                 this.arrayListTvSeries.addAll(it.results!!)
             }
             recyclerViewTvSeriesAdapter.notifyDataSetChanged()
         })
-        movieViewModel.getTvSeries("en-US",pagePopularTvSeries)
-        movieViewModel.mutableTvSeriesLiveData.observe(viewLifecycleOwner, Observer {
+        moviesViewModel.getTvSeries("en-US",pagePopularTvSeries)
+        moviesViewModel.mutableTvSeriesLiveData.observe(viewLifecycleOwner, Observer {
             totalPagesPopularTvSeries = it?.totalPages!!
         })
         binding.recyclerViewTvSeries.addOnScrollListener(object :RecyclerView.OnScrollListener(){
@@ -64,7 +64,7 @@ class TvSeriesFragment : Fragment() {
                     if(pagePopularTvSeries < totalPagesPopularTvSeries){
                         Handler().postDelayed({
                             pagePopularTvSeries+=1
-                            movieViewModel.getTvSeries("en-US",pagePopularTvSeries)
+                            moviesViewModel.getTvSeries("en-US",pagePopularTvSeries)
                         },2000)
 
                     }else{

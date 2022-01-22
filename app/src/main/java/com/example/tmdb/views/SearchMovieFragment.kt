@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -39,7 +40,7 @@ class SearchMovieFragment : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("NotifyDataSetChanged")
+    @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         movieAndTvSeriesSearchViewModel = ViewModelProvider(this)[MovieAndTvSeriesSearchViewModel::class.java]
@@ -54,9 +55,12 @@ class SearchMovieFragment : Fragment() {
         binding.recyclerViewResultsMovie.setHasFixedSize(true)
         binding.recyclerViewResultsMovie.itemAnimator = null
         movieAndTvSeriesSearchViewModel.mutableMoviesSearchLiveData.observe(this.viewLifecycleOwner, Observer {
-            if(it?.results !=null){
+            if(it?.results?.isNotEmpty() == true){
                 arrayListSearchMovieResults.addAll(it.results!!)
                 recyclerViewMovieSearchResultsAdapter.notifyDataSetChanged()
+            }else{
+                binding.textViewStatusSearchMovies.visibility = View.VISIBLE
+                binding.textViewStatusSearchMovies.text = "Can not found your favorite movie \n ʕ = ᴥ = ʔ"
             }
             totalPagesMovieSearch = it?.totalPages!!
         })
@@ -69,24 +73,20 @@ class SearchMovieFragment : Fragment() {
 
             }
             override fun afterTextChanged(s: Editable?) {
-                if(s!= null){
+                if(s.toString().isNotEmpty()){
                     binding.recyclerViewResultsMovie.visibility = View.VISIBLE
+                    binding.textViewStatusSearchMovies.visibility = View.INVISIBLE
                     arrayListSearchMovieResults.clear()
                     recyclerViewMovieSearchResultsAdapter.notifyDataSetChanged()
-
-                    Handler().postDelayed({
-                        binding.progressBarLoadingSearchMovies.visibility = View.INVISIBLE
-                    },2000)
-                    binding.progressBarLoadingSearchMovies.visibility = View.VISIBLE
                     string = s.toString()
                     Handler().postDelayed({
                         pageMovieSearch = 1
                         movieAndTvSeriesSearchViewModel.getMoviesSearch("en-US",string, pageMovieSearch,false)
                         Log.d("Load search","$pageMovieSearch")
                     },2000)
-                }
-                if(s == null){
+                }else{
                     binding.recyclerViewResultsMovie.visibility = View.INVISIBLE
+                    binding.textViewStatusSearchMovies.visibility = View.VISIBLE
                 }
             }
         })
@@ -103,7 +103,7 @@ class SearchMovieFragment : Fragment() {
                             movieAndTvSeriesSearchViewModel.getMoviesSearch("en-US",string,pageMovieSearch,false)
                         },2000)
                     }else {
-                        Toast.makeText(requireContext(),"All of Movies is displayed",
+                        Toast.makeText(requireContext(),"All of movies is displayed",
                             Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -115,9 +115,6 @@ class SearchMovieFragment : Fragment() {
                 .replace(R.id.fragmentSearch, SearchTvSeriesFragment())
                 .commit()
         }
-
-
-
         binding.imageViewBackButtonSearchMovies.setOnClickListener {
             activity?.finish()
         }

@@ -102,12 +102,12 @@ class RecyclerViewTvSeriesAdapter(private var context: Context,
         if(holder is LoadingPopularTvSeriesVH){
             val layoutParams = holder.itemView.layoutParams as StaggeredGridLayoutManager.LayoutParams
             layoutParams.isFullSpan = true
+            holder.itemLoadingPopularTvSeriesLayoutBinding.progressBarLoadingTvSeries.visibility =
+                View.VISIBLE
             Handler().postDelayed({
                 holder.itemLoadingPopularTvSeriesLayoutBinding.progressBarLoadingTvSeries.visibility =
                     View.INVISIBLE
             },2000)
-            holder.itemLoadingPopularTvSeriesLayoutBinding.progressBarLoadingTvSeries.visibility =
-                View.VISIBLE
         }
     }
 

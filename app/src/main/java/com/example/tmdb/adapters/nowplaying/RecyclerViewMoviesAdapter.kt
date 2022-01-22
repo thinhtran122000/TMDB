@@ -142,12 +142,13 @@ class RecyclerViewMoviesAdapter(private var context: Context,
             // Set full span
             val layoutParams = holder.itemView.layoutParams as StaggeredGridLayoutManager.LayoutParams
             layoutParams.isFullSpan = true
+            holder.itemLoadingNowPlayingMovieLayoutBinding.progressBarLoadingNowPlayingMovie.visibility =
+                View.VISIBLE
             Handler().postDelayed({
             holder.itemLoadingNowPlayingMovieLayoutBinding.progressBarLoadingNowPlayingMovie.visibility =
                 View.INVISIBLE
             },2000)
-            holder.itemLoadingNowPlayingMovieLayoutBinding.progressBarLoadingNowPlayingMovie.visibility =
-                View.VISIBLE
+
         }
     }
 

@@ -11,12 +11,15 @@
         android:id="@+id/imageViewTMDB"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:background="@drawable/custom_logo_tmdb"
+        android:padding="30dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.19"
-        app:srcCompat="@drawable/tmdb" />
+        app:srcCompat="@drawable/logo_tmdb" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editTextEmail"
@@ -30,6 +33,7 @@
         android:paddingStart="20dp"
         android:textColor="@color/black"
         android:textColorHint="@color/gray"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageViewTMDB"
         app:layout_constraintStart_toStartOf="@+id/imageViewTMDB"
@@ -47,13 +51,12 @@
         android:inputType="textPassword"
         android:paddingStart="20dp"
         android:textColorHint="@color/gray"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextEmail"
         app:layout_constraintStart_toStartOf="@+id/editTextEmail"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
         app:layout_constraintVertical_bias="0.0" />
-
-
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -63,8 +66,10 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/custom_background_button_auth"
         android:text="Login"
-        android:textSize="18dp"
         android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textAllCaps="false"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
         app:layout_constraintStart_toStartOf="@+id/editTextPassword"
@@ -79,6 +84,7 @@
         android:text="@string/sign_up"
         android:textColor="@color/white"
         android:textSize="15dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
         app:layout_constraintStart_toStartOf="@+id/buttonLogin"
@@ -93,6 +99,7 @@
         android:text="Forgot password?"
         android:textColor="@color/white"
         android:textSize="15dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textViewSignUp"
         app:layout_constraintStart_toStartOf="@+id/textViewSignUp"

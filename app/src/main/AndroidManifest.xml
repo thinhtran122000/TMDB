@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.tmdb">
+    package="com.example.tmdb" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <queries>
         <intent>
@@ -20,7 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TMDB"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m">
+        tools:targetApi="m" >
+        <activity
+            android:name=".views.SplashScreenActivity"
+            android:exported="false" />
         <activity
             android:name=".views.ChangePasswordActivity"
             android:exported="false" />
@@ -30,11 +34,11 @@
         <activity
             android:name=".views.SignUpActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".views.LoginActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,28 +53,28 @@
             android:name=".views.TvSeriesBroadcastingSeasonsDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".views.ListTvSeriesCrewDetailsActivity"
+            android:name=".views.TvSeriesCrewDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".views.ListTvSeriesCastDetailsActivity"
+            android:name=".views.TvSeriesCastDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".views.TvSeriesListCreditsActivity"
             android:exported="false" />
         <activity
-            android:name=".views.ListNowPlayingMovieCrewDetailsActivity"
+            android:name=".views.NowPlayingMovieCrewDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".views.ListNowPLayingMovieCastDetailsActivity"
+            android:name=".views.NowPLayingMovieCastDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".views.NowPlayingMovieListCreditsActivity"
             android:exported="false" />
         <activity
-            android:name=".views.ListTrendingMovieCrewDetailsActivity"
+            android:name=".views.TrendingMovieCrewDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".views.ListTrendingMovieCastDetailsActivity"
+            android:name=".views.TrendingMovieCastDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".views.TrendingMovieListCreditsActivity"

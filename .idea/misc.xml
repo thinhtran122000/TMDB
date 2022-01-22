@@ -12,6 +12,7 @@
         <entry key="..\:/TMDB/app/src/main/res/drawable/custom_background_button_auth.xml" value="0.2203125" />
         <entry key="..\:/TMDB/app/src/main/res/drawable/custom_background_dialog.xml" value="0.2203125" />
         <entry key="..\:/TMDB/app/src/main/res/drawable/custom_background_dialog_accept_button.xml" value="0.2203125" />
+        <entry key="..\:/TMDB/app/src/main/res/drawable/custom_background_dialog_authentication.xml" value="0.2169230769230769" />
         <entry key="..\:/TMDB/app/src/main/res/drawable/custom_background_dialog_reject_button.xml" value="0.2203125" />
         <entry key="..\:/TMDB/app/src/main/res/drawable/custom_background_item_genre.xml" value="0.2203125" />
         <entry key="..\:/TMDB/app/src/main/res/drawable/custom_background_overlay_layout.xml" value="0.2203125" />
@@ -26,11 +27,16 @@
         <entry key="..\:/TMDB/app/src/main/res/drawable/custom_color_selector.xml" value="0.2203125" />
         <entry key="..\:/TMDB/app/src/main/res/drawable/custom_edit_text.xml" value="0.2203125" />
         <entry key="..\:/TMDB/app/src/main/res/drawable/custom_edit_text_user_name.xml" value="0.2203125" />
+        <entry key="..\:/TMDB/app/src/main/res/drawable/custom_icon_indicator.xml" value="0.2203125" />
+        <entry key="..\:/TMDB/app/src/main/res/drawable/custom_icon_indicator_unselected.xml" value="0.2203125" />
         <entry key="..\:/TMDB/app/src/main/res/drawable/custom_icon_selected_color.xml" value="0.2203125" />
+        <entry key="..\:/TMDB/app/src/main/res/drawable/custom_layout_item_up_coming_movie.xml" value="0.2203125" />
+        <entry key="..\:/TMDB/app/src/main/res/drawable/custom_logo_tmdb.xml" value="0.2203125" />
         <entry key="..\:/TMDB/app/src/main/res/drawable/custom_poster.xml" value="0.2203125" />
         <entry key="..\:/TMDB/app/src/main/res/drawable/custom_search_view.xml" value="0.2203125" />
         <entry key="..\:/TMDB/app/src/main/res/drawable/custom_tab_indicator.xml" value="0.2203125" />
         <entry key="..\:/TMDB/app/src/main/res/drawable/custom_text_view_movie_name.xml" value="0.2203125" />
+        <entry key="..\:/TMDB/app/src/main/res/drawable/custome_icon_indicator_unselected.xml" value="0.2203125" />
         <entry key="..\:/TMDB/app/src/main/res/drawable/gradient_background_screen.xml" value="0.2203125" />
         <entry key="..\:/TMDB/app/src/main/res/drawable/gradient_color.xml" value="0.2203125" />
         <entry key="..\:/TMDB/app/src/main/res/drawable/gradient_color_image_star_icon.xml" value="0.2203125" />
@@ -49,29 +55,36 @@
         <entry key="..\:/TMDB/app/src/main/res/layout/activity_list_trending_movie_crew_details.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/activity_list_tv_series_cast_details.xml" value="0.2" />
         <entry key="..\:/TMDB/app/src/main/res/layout/activity_list_tv_series_crew_details.xml" value="0.20416666666666666" />
-        <entry key="..\:/TMDB/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="..\:/TMDB/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/activity_now_playing_movie_cast_details.xml" value="0.20416666666666666" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/activity_now_playing_movie_crew_details.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/activity_now_playing_movie_details.xml" value="0.25" />
         <entry key="..\:/TMDB/app/src/main/res/layout/activity_now_playing_movie_list_credits.xml" value="0.25" />
         <entry key="..\:/TMDB/app/src/main/res/layout/activity_search_movies_and_tv_series.xml" value="0.22" />
-        <entry key="..\:/TMDB/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/activity_splash_screen.xml" value="0.18" />
         <entry key="..\:/TMDB/app/src/main/res/layout/activity_trending_movie_cast_details.xml" value="0.25" />
         <entry key="..\:/TMDB/app/src/main/res/layout/activity_trending_movie_crew_details.xml" value="0.20416666666666666" />
-        <entry key="..\:/TMDB/app/src/main/res/layout/activity_trending_movie_details.xml" value="0.25" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/activity_trending_movie_details.xml" value="0.22" />
         <entry key="..\:/TMDB/app/src/main/res/layout/activity_trending_movie_list_cast_and_crew.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/activity_trending_movie_list_credits.xml" value="0.25" />
         <entry key="..\:/TMDB/app/src/main/res/layout/activity_tv_series_broadcasting_seasons_details.xml" value="0.25" />
         <entry key="..\:/TMDB/app/src/main/res/layout/activity_tv_series_details.xml" value="0.25" />
         <entry key="..\:/TMDB/app/src/main/res/layout/activity_tv_series_list_credits.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/activity_verify_account.xml" value="0.20416666666666666" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/custom_activity_login_dialog_internet_connection_layout.xml" value="0.25" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/custom_activity_main_dialog_internet_connection_layout.xml" value="0.25" />
         <entry key="..\:/TMDB/app/src/main/res/layout/custom_dialog_profile_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/custom_dialog_save_profile_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/fragment_dialog.xml" value="0.22" />
         <entry key="..\:/TMDB/app/src/main/res/layout/fragment_discovery.xml" value="0.22" />
         <entry key="..\:/TMDB/app/src/main/res/layout/fragment_documentary.xml" value="0.20416666666666666" />
-        <entry key="..\:/TMDB/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/TMDB/app/src/main/res/layout/fragment_movies.xml" value="0.22" />
         <entry key="..\:/TMDB/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
-        <entry key="..\:/TMDB/app/src/main/res/layout/fragment_search_movie.xml" value="0.20416666666666666" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/fragment_search_movie.xml" value="0.2" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/fragment_search_tv_series.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/fragment_sports.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/fragment_tv_series.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/fragment_tv_series_search.xml" value="0.20416666666666666" />
@@ -84,9 +97,11 @@
         <entry key="..\:/TMDB/app/src/main/res/layout/item_list_tv_series_crew_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_loading_movie.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_loading_movie_layout.xml" value="0.22" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/item_loading_movie_search_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_loading_now_playing_movie_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_loading_popular_tv_series_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_loading_tv_series_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/item_loading_tv_series_search_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_more_popular_tv_series_layout.xml" value="0.22" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_more_popular_tv_series_search_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_movie_layout.xml" value="0.25" />
@@ -100,22 +115,24 @@
         <entry key="..\:/TMDB/app/src/main/res/layout/item_now_playing_movie_related_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_now_playing_popular_movie_layout.xml" value="0.25" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_nowplaying_movie_cast_layout.xml" value="0.25" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/item_popular_movie_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_popular_movie_search_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_popular_tv_series_layout.xml" value="0.25" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_popular_tv_series_search_layout.xml" value="0.20416666666666666" />
-        <entry key="..\:/TMDB/app/src/main/res/layout/item_trending_movie_cast_layout.xml" value="0.25" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/item_trending_movie_cast_layout.xml" value="0.33" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_trending_movie_crew_layout.xml" value="0.25" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_trending_movie_genre_layout.xml" value="0.5" />
-        <entry key="..\:/TMDB/app/src/main/res/layout/item_trending_movie_layout.xml" value="0.18" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/item_trending_movie_layout.xml" value="0.2" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_trending_movie_related.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_trending_movie_related_layout.xml" value="0.20416666666666666" />
-        <entry key="..\:/TMDB/app/src/main/res/layout/item_tv_series_broadcasting_season_layout.xml" value="0.25" />
-        <entry key="..\:/TMDB/app/src/main/res/layout/item_tv_series_cast_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/item_tv_series_broadcasting_season_layout.xml" value="0.33" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/item_tv_series_cast_layout.xml" value="0.25" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_tv_series_genre_layout.xml" value="0.67" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_tv_series_popular_search_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_tv_series_related.xml" value="0.20416666666666666" />
-        <entry key="..\:/TMDB/app/src/main/res/layout/item_tv_series_related_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/item_tv_series_related_layout.xml" value="0.67" />
         <entry key="..\:/TMDB/app/src/main/res/layout/item_tv_series_search_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/TMDB/app/src/main/res/layout/item_up_coming_movie_layout.xml" value="0.33" />
         <entry key="..\:/TMDB/app/src/main/res/menu/menu.xml" value="0.18" />
         <entry key="..\:/TMDB/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2203125" />
       </map>

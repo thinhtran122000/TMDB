@@ -24,6 +24,10 @@ class SearchMoviesAndTvSeriesActivity : AppCompatActivity() {
             SearchMovieFragment()
         ).commit()
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed();
+    }
 }
 
 

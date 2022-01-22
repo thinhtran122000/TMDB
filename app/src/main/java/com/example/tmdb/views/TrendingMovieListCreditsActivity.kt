@@ -3,6 +3,7 @@ package com.example.tmdb.views
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
@@ -30,7 +31,8 @@ class TrendingMovieListCreditsActivity : AppCompatActivity() {
         val lisTrendingMovieCrew = trendingMovieCreditsIntent.getParcelableArrayListExtra<MovieCrew>("List trending movie crew")
         recyclerViewListTrendingMovieCastAdapter = RecyclerViewListTrendingMovieCastAdapter(this,listTrendingMovieCast)
         recyclerViewListTrendingMovieCrewAdapter = RecyclerViewListTrendingMovieCrewAdapter(this,lisTrendingMovieCrew)
-        recyclerViewTrendingMovieCreditsConcatAdapter = ConcatAdapter(recyclerViewListTrendingMovieCastAdapter,recyclerViewListTrendingMovieCrewAdapter)
+        recyclerViewTrendingMovieCreditsConcatAdapter =
+            ConcatAdapter(recyclerViewListTrendingMovieCastAdapter, recyclerViewListTrendingMovieCrewAdapter)
         gridLayoutManager = GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false)
         binding.recyclerViewListCreditsTM.setHasFixedSize(true)
         binding.recyclerViewListCreditsTM.itemAnimator = DefaultItemAnimator()
@@ -38,6 +40,15 @@ class TrendingMovieListCreditsActivity : AppCompatActivity() {
         binding.recyclerViewListCreditsTM.adapter = recyclerViewTrendingMovieCreditsConcatAdapter
         recyclerViewListTrendingMovieCastAdapter.notifyDataSetChanged()
         recyclerViewListTrendingMovieCrewAdapter.notifyDataSetChanged()
+        binding.swipeRefreshLayoutCreditsTM.setOnRefreshListener {
+            Handler().postDelayed({
+                recyclerViewListTrendingMovieCastAdapter.notifyDataSetChanged()
+                recyclerViewListTrendingMovieCrewAdapter.notifyDataSetChanged()
+            },2000)
+            Handler().postDelayed({
+                binding.swipeRefreshLayoutCreditsTM.isRefreshing = false
+            },3000)
+        }
         binding.imageViewBackButtonCreditsTM.setOnClickListener {
             onBackPressed()
         }

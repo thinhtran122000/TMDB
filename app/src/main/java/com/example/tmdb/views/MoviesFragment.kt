@@ -15,11 +15,11 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.tmdb.adapters.nowplaying.RecyclerViewMoviesAdapter
 import com.example.tmdb.databinding.FragmentMoviesBinding
 import com.example.tmdb.models.movies.NowPlayingMovie
-import com.example.tmdb.viewmodels.MovieViewModel
+import com.example.tmdb.viewmodels.MoviesViewModel
 
 class MoviesFragment : Fragment() {
     private lateinit var binding: FragmentMoviesBinding
-    private lateinit var movieViewModel: MovieViewModel
+    private lateinit var moviesViewModel: MoviesViewModel
     private lateinit var recyclerViewMoviesAdapter: RecyclerViewMoviesAdapter
     private var arrayListNowPlayingMovies:ArrayList<NowPlayingMovie> = arrayListOf()
     private lateinit var staggeredGridLayoutManager:StaggeredGridLayoutManager
@@ -34,7 +34,7 @@ class MoviesFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        movieViewModel = ViewModelProvider(this)[MovieViewModel::class.java]
+        moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         recyclerViewMoviesAdapter = RecyclerViewMoviesAdapter(requireContext(),arrayListNowPlayingMovies)
         staggeredGridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         staggeredGridLayoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
@@ -44,14 +44,14 @@ class MoviesFragment : Fragment() {
         binding.recyclerViewMovies.layoutManager = staggeredGridLayoutManager
         binding.recyclerViewMovies.setHasFixedSize(true)
         binding.recyclerViewMovies.itemAnimator = null
-        movieViewModel.mutableNowPlayingMoviesLiveData.observe(this.viewLifecycleOwner, Observer {
+        moviesViewModel.mutableNowPlayingMoviesLiveData.observe(this.viewLifecycleOwner, Observer {
             if(it?.results !=null){
                 arrayListNowPlayingMovies.addAll(it.results!!)
             }
             recyclerViewMoviesAdapter.notifyDataSetChanged()
         })
-        movieViewModel.getNowPlayingMovies("en-US",pageNowPlayingMovie)
-        movieViewModel.mutableNowPlayingMoviesLiveData.observe(this.viewLifecycleOwner, Observer {
+        moviesViewModel.getNowPlayingMovies("en-US",pageNowPlayingMovie)
+        moviesViewModel.mutableNowPlayingMoviesLiveData.observe(this.viewLifecycleOwner, Observer {
             totalPagesNowPlayingMovie = it?.totalPages!!
         })
         binding.recyclerViewMovies.addOnScrollListener(object :RecyclerView.OnScrollListener(){
@@ -64,7 +64,7 @@ class MoviesFragment : Fragment() {
                     if(pageNowPlayingMovie < totalPagesNowPlayingMovie){
                         Handler().postDelayed({
                             pageNowPlayingMovie+=1
-                            movieViewModel.getNowPlayingMovies("en-US",pageNowPlayingMovie)
+                            moviesViewModel.getNowPlayingMovies("en-US",pageNowPlayingMovie)
                         },2000)
                     }else {
                         Toast.makeText(requireContext(),"All of Movies is displayed",Toast.LENGTH_SHORT).show()

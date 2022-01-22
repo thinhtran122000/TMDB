@@ -208,4 +208,49 @@ class Repository {
             onError = {OnError()}
         )
     }
+    fun getTopRatedMovies(apiKey: String,
+                          language: String,
+                          page: Int,
+                          OnSuccess: (TopRatedMoviesResponse?) -> Unit,
+                          OnError: () -> Unit){
+        APIRequest.callRequest(
+            call = APIService.getInstance().getTopRatedMovies(Credentials.API_KEY,language,page),
+            onSuccess = {results -> OnSuccess.invoke(results!!)},
+            onError = {OnError()}
+        )
+    }
+    fun getUpComingMovies(apiKey: String,
+                          language: String,
+                          page: Int,
+                          OnSuccess: (UpComingMoviesResponse?) -> Unit,
+                          OnError: () -> Unit){
+        APIRequest.callRequest(
+            call = APIService.getInstance().getUpComingMovies(Credentials.API_KEY,language,page),
+            onSuccess = {results -> OnSuccess.invoke(results!!)},
+            onError = {OnError()}
+        )
+    }
+
+    fun getUpComingMovieVideo(movieId:Int,
+                              apiKey:String,
+                              language:String,
+                              OnSuccess: (MovieVideoResponse?) -> Unit,
+                              OnError: () -> Unit){
+        APIRequest.callRequest(
+            call = APIService.getInstance().getVideoUpComingMovie(movieId,Credentials.API_KEY,language),
+            onSuccess = {results -> OnSuccess.invoke(results!!)},
+            onError = {OnError()}
+        )
+    }
+    fun getPopularMovies(apiKey: String,
+                         language: String,
+                         page: Int,
+                         OnSuccess: (PopularMoviesResponse?) -> Unit,
+                         OnError: () -> Unit){
+        APIRequest.callRequest(
+            call = APIService.getInstance().getPopularMovies(Credentials.API_KEY,language, page),
+            onSuccess = {results -> OnSuccess.invoke(results!!)},
+            onError = {OnError()}
+        )
+    }
 }

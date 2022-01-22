@@ -10,6 +10,7 @@ import com.example.tmdb.databinding.ActivityTvSeriesBroadcastingSeasonsDetailsBi
 import com.example.tmdb.utils.Credentials
 import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.util.*
 
 
 class TvSeriesBroadcastingSeasonsDetailsActivity : AppCompatActivity() {
@@ -90,9 +91,9 @@ class TvSeriesBroadcastingSeasonsDetailsActivity : AppCompatActivity() {
     }
     @SuppressLint("SimpleDateFormat")
     private fun formatTvSeriesBroadcastingSeasonAirDate(releaseDate: String): String {
-        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
         val dateFormat = simpleDateFormat.parse(releaseDate)
-        val secondSimpleDateFormat = SimpleDateFormat("MMMM dd, yyyy")
+        val secondSimpleDateFormat = SimpleDateFormat("MMMM dd, yyyy",Locale.ENGLISH)
         return secondSimpleDateFormat.format(dateFormat!!)
     }
 

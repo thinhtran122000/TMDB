@@ -3,6 +3,7 @@ package com.example.tmdb.views
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
@@ -38,6 +39,15 @@ class NowPlayingMovieListCreditsActivity : AppCompatActivity() {
         binding.recyclerViewListCreditsNPM.adapter = recyclerViewNowPlayingMovieCreditsConcatAdapter
         recyclerViewListNowPlayingMovieCastAdapter.notifyDataSetChanged()
         recyclerViewListNowPlayingMovieCrewAdapter.notifyDataSetChanged()
+        binding.swipeRefreshLayoutCreditsNPM.setOnRefreshListener {
+            Handler().postDelayed({
+                recyclerViewListNowPlayingMovieCastAdapter.notifyDataSetChanged()
+                recyclerViewListNowPlayingMovieCrewAdapter.notifyDataSetChanged()
+            },2000)
+            Handler().postDelayed({
+                binding.swipeRefreshLayoutCreditsNPM.isRefreshing = false
+            },3000)
+        }
         binding.imageViewBackButtonCreditsNPM.setOnClickListener {
             onBackPressed()
         }

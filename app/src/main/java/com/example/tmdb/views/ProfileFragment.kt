@@ -62,26 +62,38 @@ class ProfileFragment : Fragment(){
         // Condition when click save button
         val currentUser= firebaseAuth.currentUser
         binding.buttonSave.setOnClickListener {
-            if(currentUser?.displayName == binding.editTextUserName.text.toString()){
-                dialog.dismiss()
+            if(currentUser?.displayName == binding.editTextUserName.text.toString() || binding.editTextUserName.text.toString().isEmpty()){
+                if(!currentUser?.isEmailVerified!!){
+                    dialog.dismiss()
+                }
             }else{
-                dialog.show()
-                areYouSureTextView.text = "Are you sure about changing your name?"
+                if(!currentUser?.isEmailVerified!!){
+                    dialog.dismiss()
+                    Toast.makeText(requireContext(),"Please verify your account before changing information",Toast.LENGTH_SHORT).show()
+                }else{
+                    dialog.show()
+                    areYouSureTextView.text = "Are you sure about changing your name?"
+                }
             }
         }
         // Update user name when clicked accept button in dialog
         acceptButton.setOnClickListener {
             try {
-                val userProfileChangeRequest =  UserProfileChangeRequest.Builder()
-                currentUser?.updateProfile(userProfileChangeRequest.setDisplayName(binding.editTextUserName.text.toString()).build())
-                dialog.dismiss()
-                showProgressBarChangeProfile()
-                Handler().postDelayed({
-                    binding.editTextUserName.setText(currentUser?.displayName)
-                    Toast.makeText(requireContext(),
-                        "Your name is changed successfully.\n ＼ʕ •ᴥ•ʔ／ ",Toast.LENGTH_SHORT).show()
-                },2000)
-                Log.d("User name","${currentUser?.displayName}")
+                if(currentUser?.isEmailVerified!!){
+                    val userProfileChangeRequest =  UserProfileChangeRequest.Builder()
+                    currentUser.updateProfile(userProfileChangeRequest.setDisplayName(binding.editTextUserName.text.toString()).build())
+                    dialog.dismiss()
+                    showProgressBarChangeProfile()
+                    Handler().postDelayed({
+                        binding.editTextUserName.setText(currentUser.displayName)
+                        Toast.makeText(requireContext(),
+                            "Your name is changed successfully.\n ＼ʕ •ᴥ•ʔ／ ",Toast.LENGTH_SHORT).show()
+                    },2000)
+                    Log.d("User name","${currentUser.displayName}")
+                }else{
+                    Toast.makeText(requireContext(),"Please verify your account before changing information",Toast.LENGTH_SHORT).show()
+                    Log.d("User name","${currentUser.displayName}")
+                }
             }catch (e:Exception){
                 Toast.makeText(requireContext(),e.message,Toast.LENGTH_SHORT).show()
             }
@@ -240,7 +252,7 @@ class ProfileFragment : Fragment(){
         if(currentUser !=null){
             if(currentUser.isEmailVerified){
                 currentUser.reload()
-                binding.textViewStatus.visibility = View.GONE
+                binding.textViewStatus.visibility = View.INVISIBLE
             }
         }
     }

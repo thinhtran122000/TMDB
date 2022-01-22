@@ -99,10 +99,12 @@ class SignUpActivity : AppCompatActivity() {
                             }
                             Handler().postDelayed({
                                 Toast.makeText(this,"Create account successfully ＼ʕ •ᴥ•ʔ／",Toast.LENGTH_SHORT).show()
-                                val intent = Intent(this, MainActivity::class.java)
+                            },2000)
+                            Handler().postDelayed({
+                                val intent = Intent(this, SplashScreenActivity::class.java)
                                 startActivity(intent)
                                 finish()
-                            }, 2000)
+                            }, 3000)
                         }.addOnFailureListener {
                             val emailUser = binding.editTextEmailRegister.text.toString()
                             Handler().postDelayed({

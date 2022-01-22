@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.example.tmdb.views.ListNowPLayingMovieCastDetailsActivity
+import com.example.tmdb.views.NowPLayingMovieCastDetailsActivity
 import com.example.tmdb.R
 import com.example.tmdb.databinding.ItemListNowPlayingMovieCastLayoutBinding
 import com.example.tmdb.models.moviecredits.MovieCast
@@ -62,7 +62,7 @@ class RecyclerViewListNowPlayingMovieCastAdapter(private var context: Context,
             }
             holder.setIsRecyclable(false)
             holder.itemView.setOnClickListener {
-                val intent = Intent(holder.itemView.context, ListNowPLayingMovieCastDetailsActivity::class.java)
+                val intent = Intent(holder.itemView.context, NowPLayingMovieCastDetailsActivity::class.java)
                 intent.putExtra("Now playing movie list cast name",movieCast.name)
                 intent.putExtra("Now playing movie list cast gender",movieCast.gender.toString())
                 intent.putExtra("Now playing movie list cast character",movieCast.character)

@@ -3,6 +3,7 @@ package com.example.tmdb.views
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
@@ -36,6 +37,15 @@ class TvSeriesListCreditsActivity : AppCompatActivity() {
         binding.recyclerViewListCreditsTS.adapter = recyclerViewTvSeriesCreditsConcatAdapter
         recyclerViewListTvSeriesCastAdapter.notifyDataSetChanged()
         recyclerViewListTvSeriesCrewAdapter.notifyDataSetChanged()
+        binding.swipeRefreshLayoutCreditsTS.setOnRefreshListener {
+            Handler().postDelayed({
+                recyclerViewListTvSeriesCastAdapter.notifyDataSetChanged()
+                recyclerViewListTvSeriesCrewAdapter.notifyDataSetChanged()
+            },2000)
+            Handler().postDelayed({
+                binding.swipeRefreshLayoutCreditsTS.isRefreshing = false
+            },3000)
+        }
         binding.imageViewBackButtonCreditsTS.setOnClickListener {
             onBackPressed()
         }
