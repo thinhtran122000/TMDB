@@ -126,15 +126,27 @@ class ProfileFragment : Fragment(){
         }
         // Change password profile
         binding.buttonChangePasswordProfile.setOnClickListener {
-            val intent = Intent(requireActivity(), ChangePasswordActivity::class.java)
-            startActivity(intent)
+            if(currentUser !=null){
+                if(currentUser.isEmailVerified){
+                    val intent = Intent(requireActivity(), ChangePasswordActivity::class.java)
+                    startActivity(intent)
+                }else{
+                    Toast.makeText(requireContext(),"Please verify your account before changing information",Toast.LENGTH_SHORT).show()
+                }
+            }
         }
         // Get image from files on device
         binding.textViewEditPhotoProfile.setOnClickListener {
-            val intent = Intent()
-            intent.type = "image/*"
-            intent.action = Intent.ACTION_GET_CONTENT
-            startActivityForResult(intent,200)
+            if(currentUser !=null){
+                if(currentUser.isEmailVerified){
+                    val intent = Intent()
+                    intent.type = "image/*"
+                    intent.action = Intent.ACTION_GET_CONTENT
+                    startActivityForResult(intent,200)
+                }else{
+                    Toast.makeText(requireContext(),"Please verify your account before changing information",Toast.LENGTH_SHORT).show()
+                }
+            }
         }
         //Verify account
         binding.textViewStatus.setOnClickListener {
